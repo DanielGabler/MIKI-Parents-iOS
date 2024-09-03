@@ -45,7 +45,7 @@
 		1C113EC82C874FBC00F09D65 /* MIKI Parents iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MIKI Parents iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C113ECC2C874FBC00F09D65 /* MIKI_Parents_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIKI_Parents_iOSUITests.swift; sourceTree = "<group>"; };
 		1C113ECE2C874FBC00F09D65 /* MIKI_Parents_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIKI_Parents_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		1C113EDB2C87506100F09D65 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1C113EDB2C87506100F09D65 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "MIKI Parents iOS/README.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +76,7 @@
 		1C113EA52C874FBB00F09D65 = {
 			isa = PBXGroup;
 			children = (
+				1C113EDB2C87506100F09D65 /* README.md */,
 				1C113EB02C874FBB00F09D65 /* MIKI Parents iOS */,
 				1C113EC12C874FBC00F09D65 /* MIKI Parents iOSTests */,
 				1C113ECB2C874FBC00F09D65 /* MIKI Parents iOSUITests */,
@@ -100,7 +101,6 @@
 				1C113EB32C874FBB00F09D65 /* ContentView.swift */,
 				1C113EB52C874FBC00F09D65 /* Assets.xcassets */,
 				1C113EB72C874FBC00F09D65 /* Preview Content */,
-				1C113EDB2C87506100F09D65 /* README.md */,
 			);
 			path = "MIKI Parents iOS";
 			sourceTree = "<group>";
