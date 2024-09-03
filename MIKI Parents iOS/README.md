@@ -29,36 +29,36 @@ MIKI Parents kann lösungsorientiert zur Seite stehen.
 
 ## Prozess
 
-Konkurrenzanalyse
-Personas 
-User Stories und Feature Requirements 
-User Flow Diagram
-Crazy 8s
-Low- Fi Wireframes
-Paper Prototype
-Moodboard 
-Style Guide
-Mid-Fi Wireframes
-High-Fi Wireframes
-Prototype
-Preference Test: Durchführung und Auswertung 
-Nutzertest und Anpassungen an den High-Fi Wireframes
+Konkurrenzanalyse,
+Personas,
+User Stories und Feature Requirements, 
+User Flow Diagram,
+Crazy 8s,
+Low- Fi Wireframes,
+Paper Prototype,
+Moodboard, 
+Style Guide,
+Mid-Fi Wireframes,
+High-Fi Wireframes,
+Prototype,
+Preference Test: Durchführung und Auswertung, 
+Nutzertest und Anpassungen an den High-Fi Wireframes,
 
 
 ## Tools
 
-Frames
-Crazy 8s
-Mind Map
-Konkurrenzanalyse
-Nutzerinterviews mit einem Prototypen
-Figma
-Xcode
-Google Firebase
-Google Firestore
-Ferienkalender API
-Apple iTunes API
-MVVM
+Frames,
+Crazy 8s,
+Mind Map,
+Konkurrenzanalyse,
+Nutzerinterviews mit einem Prototypen,
+Figma,
+Xcode,
+Google Firebase,
+Google Firestore,
+Ferienkalender API,
+Apple iTunes API,
+MVVM,
 
 
 ## Lizenz
