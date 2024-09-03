@@ -15,7 +15,7 @@ Sämtliche Features innerhalb der App werden regelmäßig ergänzt bzw. neu hinz
 ## Installation
 
 MIKI Parents ist aktuell als Xcode Swift Projektdatei via GitHub verfügbar.
-MIKI Parents wird zukünftig 
+MIKI Parents wird zukünftig als Testflight verfügbar sein.
 MIKI Parents wird zukünftig im Apple App Store für iOS verfügbar sein.
 
 
