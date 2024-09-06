@@ -25,16 +25,14 @@ MIKI Parents soll bei Alltagsproblemen ein Bindeglied zwischen Vernatwortung, Be
 
 MIKI Parents kann nicht alle Probleme lösen.
 MIKI Parents kann lösungsorientiert zur Seite stehen.
+MIKI Parents hilft schon jetzt bei der Hausaufgbanekontrolle, Terminplanung und gibt eine bersicht der Lernfortschritte deiner Kinder.
+Zukünftig wird MIKI Parents weitere Tools erhalten, um die Benutzerfreundlichkeit zu steigern.
 
 
 ## Projektaufbau
 
-Die App ist nach dem **MVVM-Muster** (Model-View-ViewModel) strukturiert.
+Die App ist nach dem MVVM-Muster (Model-View-ViewModel) strukturiert.
 Dies sorgt für eine klare Trennung der Logik und Benutzeroberfläche und erleichtert Wartung und Erweiterungen. 
-
-- **Model**: Beinhaltet die Datenstrukturen für Events und Benutzer.
-- **View**: Stellt die Benutzeroberfläche dar und zeigt die Events an.
-- **ViewModel**: Handhabt die Logik zum Abrufen und Verarbeiten der Event-Daten. Verbindet die View mit den Model-Daten.
 
 
 ## Prozess
@@ -52,7 +50,7 @@ Mid-Fi Wireframes,
 High-Fi Wireframes,
 Prototype,
 Preference Test: Durchführung und Auswertung, 
-Nutzertest und Anpassungen an den High-Fi Wireframes,
+Nutzertest und Anpassungen an den High-Fi Wireframes
 
 
 ## Tools
@@ -68,7 +66,7 @@ Google Firebase,
 Google Firestore,
 Ferienkalender API,
 Apple iTunes API,
-MVVM,
+MVVM
 
 
 ## Design
@@ -76,5 +74,17 @@ MVVM,
 
 
 ## Lizenz
-Aktuell ist keine Lizenz erforderlich.
+Aktuell ist keine Lizenz verfügbar.
+
+
+## Kontakt
+
+Entwickler: Daniel Gabler
+E-Mail: daniel-gabler-dev@web.de
+Internet: www.miki-apps.com
+
+
+
+
+
 
