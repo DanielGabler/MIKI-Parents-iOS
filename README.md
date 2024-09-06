@@ -27,6 +27,16 @@ MIKI Parents kann nicht alle Probleme lösen.
 MIKI Parents kann lösungsorientiert zur Seite stehen.
 
 
+## Projektaufbau
+
+Die App ist nach dem **MVVM-Muster** (Model-View-ViewModel) strukturiert.
+Dies sorgt für eine klare Trennung der Logik und Benutzeroberfläche und erleichtert Wartung und Erweiterungen. 
+
+- **Model**: Beinhaltet die Datenstrukturen für Events und Benutzer.
+- **View**: Stellt die Benutzeroberfläche dar und zeigt die Events an.
+- **ViewModel**: Handhabt die Logik zum Abrufen und Verarbeiten der Event-Daten. Verbindet die View mit den Model-Daten.
+
+
 ## Prozess
 
 Konkurrenzanalyse,
