@@ -29,8 +29,10 @@ MIKI Parents wird zukünftig im Apple App Store für iOS verfügbar sein.
 
 MIKI Parents soll bei Alltagsproblemen ein Bindeglied zwischen Vernatwortung, Bewusstsein & Kommunikation ermöglichen.
 <br>
+<br>
 MIKI Parents kann nicht alle Probleme lösen.
 MIKI Parents kann lösungsorientiert zur Seite stehen.
+<br>
 <br>
 MIKI Parents hilft schon jetzt bei der Hausaufgbanekontrolle, Terminplanung und gibt eine bersicht der Lernfortschritte deiner Kinder.
 <br>
