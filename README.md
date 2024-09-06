@@ -7,9 +7,11 @@ MIKI Parents iOS
 
 MIKI Parents iOS wurde für verantwortungsbewusstes Parenting entwickelt.
 <br>
-Im Foku der App stehen Kinder gleichermaßen wie Eltern, Familienangehörige sowie optionale Kontrollorgane oder Behörden
+Im Foku der App stehen Kinder gleichermaßen wie Eltern, Familienangehörige sowie optionale Kontrollorgane oder Behörden.
+<br>
 <br>
 MIKI Parents ist bereits für Android verfügbar.
+<br>
 <br>
 Sämtliche Features innerhalb der App werden regelmäßig ergänzt bzw. neu hinzugefügt um ein umfassendes Nutzererlebnis zu ermöglichen.
 
