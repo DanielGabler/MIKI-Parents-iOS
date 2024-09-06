@@ -43,8 +43,7 @@ Zukünftig wird MIKI Parents weitere Tools erhalten, um die Benutzerfreundlichke
 
 ## Projektaufbau
 
-Die App ist nach dem MVVM-Muster (Model-View-ViewModel) strukturiert.
-Dies sorgt für eine klare Trennung der Logik und Benutzeroberfläche und erleichtert Wartung und Erweiterungen. 
+Die App ist nach dem MVVM-Muster (Model-View-ViewModel) strukturiert und ermöglicht eine klare Trennung der Logik sowie Benutzeroberfläche.
 
 
 ## Prozess
