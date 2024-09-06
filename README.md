@@ -93,9 +93,9 @@ Figma
 <br>
 Xcode
 <br>
-Google Firebase
+Google Firebase Authentication
 <br>
-Google Firestore
+Google Firebase Firestore
 <br>
 Ferienkalender API
 <br>
