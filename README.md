@@ -33,6 +33,8 @@ MIKI Parents kann nicht alle Probleme lösen.
 MIKI Parents kann lösungsorientiert zur Seite stehen.
 <br>
 MIKI Parents hilft schon jetzt bei der Hausaufgbanekontrolle, Terminplanung und gibt eine bersicht der Lernfortschritte deiner Kinder.
+<br>
+<br>
 Zukünftig wird MIKI Parents weitere Tools erhalten, um die Benutzerfreundlichkeit zu steigern.
 
 
