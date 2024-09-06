@@ -71,6 +71,10 @@ Apple iTunes API,
 MVVM,
 
 
+## Design
+![Evolution Wireframes](wireframe-evolution.png)
+
+
 ## Lizenz
 Aktuell ist keine Lizenz erforderlich.
 
