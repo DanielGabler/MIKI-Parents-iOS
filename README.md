@@ -31,6 +31,7 @@ MIKI Parents soll bei Alltagsproblemen ein Bindeglied zwischen Vernatwortung, Be
 <br>
 <br>
 MIKI Parents kann nicht alle Probleme lösen.
+<br>
 MIKI Parents kann lösungsorientiert zur Seite stehen.
 <br>
 <br>
