@@ -12,6 +12,7 @@ struct RegisterView: View {
 
     var body: some View {
         VStack {
+            // Textfelder für Email und Passwort
             TextField("Email", text: $viewModel.email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
@@ -20,17 +21,25 @@ struct RegisterView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
 
+            // Register Button
             Button("Register") {
                 viewModel.register()
             }
             .padding()
 
+            // Fehlermeldung anzeigen, falls vorhanden
             if let errorMessage = viewModel.errorMessage {
                 Text(errorMessage)
                     .foregroundColor(.red)
             }
+
+            // Navigation zu HomeView bei erfolgreicher Registrierung
+            NavigationLink(destination: HomeView(), isActive: $viewModel.registerSuccess) {
+                EmptyView()
+            }
         }
         .padding()
+        .navigationTitle("Register")
     }
 }
 

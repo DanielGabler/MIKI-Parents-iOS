@@ -19,7 +19,7 @@ class RegisterViewModel: ObservableObject {
             if let error = error {
                 self?.errorMessage = error.localizedDescription
             } else {
-                self?.registerSuccess = true
+                self?.registerSuccess = true  // Erfolgreiche Registrierung
             }
         }
     }

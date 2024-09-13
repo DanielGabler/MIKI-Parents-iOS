@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1C0FD4F52C90926800B1DBEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C0FD4F42C90926800B1DBEA /* GoogleService-Info.plist */; };
+		1C0FD4F72C9432C300B1DBEA /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FD4F62C9432C300B1DBEA /* SettingsTabView.swift */; };
+		1C0FD4F92C9433DD00B1DBEA /* KidsMusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FD4F82C9433DD00B1DBEA /* KidsMusicItem.swift */; };
+		1C0FD4FB2C94342700B1DBEA /* KidsMusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FD4FA2C94342700B1DBEA /* KidsMusicViewModel.swift */; };
+		1C0FD4FD2C9434B000B1DBEA /* KidsMusicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FD4FC2C9434B000B1DBEA /* KidsMusicDetailView.swift */; };
 		1C113EB22C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C113EB12C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift */; };
 		1C113EB42C874FBB00F09D65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C113EB32C874FBB00F09D65 /* ContentView.swift */; };
 		1C113EB62C874FBC00F09D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C113EB52C874FBC00F09D65 /* Assets.xcassets */; };
@@ -43,10 +47,10 @@
 		1CE2F5DA2C908B44000F818C /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5D92C908B44000F818C /* RegisterViewModel.swift */; };
 		1CE2F5DC2C908B7D000F818C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5DB2C908B7D000F818C /* RegisterView.swift */; };
 		1CE2F5DE2C908BF6000F818C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5DD2C908BF6000F818C /* HomeView.swift */; };
-		1CE2F5E02C908C33000F818C /* Page1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5DF2C908C33000F818C /* Page1View.swift */; };
-		1CE2F5E22C908C66000F818C /* Page2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5E12C908C66000F818C /* Page2View.swift */; };
-		1CE2F5E42C908C96000F818C /* Page3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5E32C908C96000F818C /* Page3View.swift */; };
-		1CE2F5E62C908CA7000F818C /* Page4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5E52C908CA7000F818C /* Page4View.swift */; };
+		1CE2F5E02C908C33000F818C /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5DF2C908C33000F818C /* HomeTabView.swift */; };
+		1CE2F5E22C908C66000F818C /* NotesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5E12C908C66000F818C /* NotesTabView.swift */; };
+		1CE2F5E42C908C96000F818C /* HomeworkTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5E32C908C96000F818C /* HomeworkTabView.swift */; };
+		1CE2F5E62C908CA7000F818C /* KidsMusicTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5E52C908CA7000F818C /* KidsMusicTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +72,10 @@
 
 /* Begin PBXFileReference section */
 		1C0FD4F42C90926800B1DBEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1C0FD4F62C9432C300B1DBEA /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		1C0FD4F82C9433DD00B1DBEA /* KidsMusicItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsMusicItem.swift; sourceTree = "<group>"; };
+		1C0FD4FA2C94342700B1DBEA /* KidsMusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsMusicViewModel.swift; sourceTree = "<group>"; };
+		1C0FD4FC2C9434B000B1DBEA /* KidsMusicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsMusicDetailView.swift; sourceTree = "<group>"; };
 		1C113EAE2C874FBB00F09D65 /* MIKI Parents iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MIKI Parents iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C113EB12C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIKI_Parents_iOSApp.swift; sourceTree = "<group>"; };
 		1C113EB32C874FBB00F09D65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,10 +91,10 @@
 		1CE2F5D92C908B44000F818C /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		1CE2F5DB2C908B7D000F818C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		1CE2F5DD2C908BF6000F818C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		1CE2F5DF2C908C33000F818C /* Page1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1View.swift; sourceTree = "<group>"; };
-		1CE2F5E12C908C66000F818C /* Page2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2View.swift; sourceTree = "<group>"; };
-		1CE2F5E32C908C96000F818C /* Page3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page3View.swift; sourceTree = "<group>"; };
-		1CE2F5E52C908CA7000F818C /* Page4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page4View.swift; sourceTree = "<group>"; };
+		1CE2F5DF2C908C33000F818C /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+		1CE2F5E12C908C66000F818C /* NotesTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTabView.swift; sourceTree = "<group>"; };
+		1CE2F5E32C908C96000F818C /* HomeworkTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkTabView.swift; sourceTree = "<group>"; };
+		1CE2F5E52C908CA7000F818C /* KidsMusicTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsMusicTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,12 +171,16 @@
 				1CE2F5D72C908ACE000F818C /* LoginView.swift */,
 				1CE2F5DB2C908B7D000F818C /* RegisterView.swift */,
 				1CE2F5DD2C908BF6000F818C /* HomeView.swift */,
-				1CE2F5DF2C908C33000F818C /* Page1View.swift */,
-				1CE2F5E12C908C66000F818C /* Page2View.swift */,
-				1CE2F5E32C908C96000F818C /* Page3View.swift */,
-				1CE2F5E52C908CA7000F818C /* Page4View.swift */,
+				1CE2F5DF2C908C33000F818C /* HomeTabView.swift */,
+				1CE2F5E12C908C66000F818C /* NotesTabView.swift */,
+				1CE2F5E32C908C96000F818C /* HomeworkTabView.swift */,
+				1CE2F5E52C908CA7000F818C /* KidsMusicTabView.swift */,
+				1C0FD4F82C9433DD00B1DBEA /* KidsMusicItem.swift */,
+				1C0FD4FC2C9434B000B1DBEA /* KidsMusicDetailView.swift */,
+				1C0FD4F62C9432C300B1DBEA /* SettingsTabView.swift */,
 				1CE2F5D52C908A98000F818C /* LoginViewModel.swift */,
 				1CE2F5D92C908B44000F818C /* RegisterViewModel.swift */,
+				1C0FD4FA2C94342700B1DBEA /* KidsMusicViewModel.swift */,
 				1C113EB12C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift */,
 				1C113EB32C874FBB00F09D65 /* ContentView.swift */,
 				1C113EB52C874FBC00F09D65 /* Assets.xcassets */,
@@ -362,17 +374,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C0FD4F72C9432C300B1DBEA /* SettingsTabView.swift in Sources */,
 				1C113EB42C874FBB00F09D65 /* ContentView.swift in Sources */,
+				1C0FD4FD2C9434B000B1DBEA /* KidsMusicDetailView.swift in Sources */,
 				1CE2F5DE2C908BF6000F818C /* HomeView.swift in Sources */,
-				1CE2F5E22C908C66000F818C /* Page2View.swift in Sources */,
-				1CE2F5E42C908C96000F818C /* Page3View.swift in Sources */,
+				1CE2F5E22C908C66000F818C /* NotesTabView.swift in Sources */,
+				1CE2F5E42C908C96000F818C /* HomeworkTabView.swift in Sources */,
+				1C0FD4F92C9433DD00B1DBEA /* KidsMusicItem.swift in Sources */,
 				1CE2F5DA2C908B44000F818C /* RegisterViewModel.swift in Sources */,
-				1CE2F5E02C908C33000F818C /* Page1View.swift in Sources */,
+				1CE2F5E02C908C33000F818C /* HomeTabView.swift in Sources */,
 				1C113EB22C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift in Sources */,
-				1CE2F5E62C908CA7000F818C /* Page4View.swift in Sources */,
+				1CE2F5E62C908CA7000F818C /* KidsMusicTabView.swift in Sources */,
 				1CE2F5DC2C908B7D000F818C /* RegisterView.swift in Sources */,
 				1CE2F5D82C908ACE000F818C /* LoginView.swift in Sources */,
 				1CE2F5D62C908A98000F818C /* LoginViewModel.swift in Sources */,
+				1C0FD4FB2C94342700B1DBEA /* KidsMusicViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

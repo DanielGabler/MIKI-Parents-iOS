@@ -10,25 +10,31 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         TabView {
-            Page1View()
+            HomeTabView()
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
                 }
 
-            Page2View()
+            NotesTabView()
                 .tabItem {
-                    Image(systemName: "star")
+                    Image(systemName: "list.bullet.clipboard.fill")
                     Text("Notizen")
                 }
 
-            Page3View()
+            HomeworkTabView()
                 .tabItem {
-                    Image(systemName: "person")
+                    Image(systemName: "doc.fill")
                     Text("Hausaufgaben")
                 }
 
-            Page4View()
+            KidsMusicTabView()
+                .tabItem {
+                    Image(systemName: "music.note.list")
+                    Text("Kids Music")
+                }
+            
+            SettingsTabView()
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Einstellungen")
