@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import FirebaseFirestoreCombineSwift
 
 struct HomeView: View {
     var body: some View {
@@ -19,19 +21,19 @@ struct HomeView: View {
             NotesTabView()
                 .tabItem {
                     Image(systemName: "list.bullet.clipboard.fill")
-                    Text("Notizen")
+                    Text("Info's")
                 }
 
             HomeworkTabView()
                 .tabItem {
                     Image(systemName: "doc.fill")
-                    Text("Hausaufgaben")
+                    Text("Aufgaben")
                 }
 
             KidsMusicTabView()
                 .tabItem {
                     Image(systemName: "music.note")
-                    Text("Kinderlieder")
+                    Text("Musik")
                 }
             
             SettingsTabView()

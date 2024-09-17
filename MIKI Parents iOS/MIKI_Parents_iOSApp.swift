@@ -8,24 +8,30 @@
 import SwiftUI
 import FirebaseCore
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        FirebaseApp.configure()
-        return true
-    }
-}
+
+import SwiftUI
+import FirebaseFirestore
 
 @main
-struct YourApp: App {
-    // register app delegate for Firebase setup
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+struct MIKI_Parents_iOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            
-            LoginView()
+            if userViewModel.isUserSignedIn {
+                HomeView()
+            } else {
+                LoginView()
+            }
         }
+        .environment(userViewModel)
     }
-}
+    
+    init() {
+        FirebaseConfiguration.shared.setLoggerLevel(.min)
+        FirebaseApp.configure()
+        userViewModel = UserViewModel()
+    }
+    
+    private let userViewModel: UserViewModel
 
+}

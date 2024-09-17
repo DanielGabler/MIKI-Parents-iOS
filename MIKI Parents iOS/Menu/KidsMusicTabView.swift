@@ -65,7 +65,7 @@ struct KidsMusicTabView: View {
                 Button(action: {
                     viewModel.fetchRandomTracks() // Button zum Neuladen der Tracks
                 }) {
-                    Text("Reload Random Tracks")
+                    Text("Neue Liste anzeigen")
                         .font(.headline)
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -75,7 +75,7 @@ struct KidsMusicTabView: View {
                         .padding()
                 }
             }
-            .navigationTitle("Kids Music")
+            .navigationTitle("Musik")
             .onAppear {
                 viewModel.fetchRandomTracks()
             }

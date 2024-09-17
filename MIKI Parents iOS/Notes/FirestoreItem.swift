@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseFirestoreCombineSwift
 
 struct FirestoreItem: Identifiable, Codable {
-    @Posts var id: String?
+    @DocumentID var id: String?
     var title: String
     var description: String
 }
