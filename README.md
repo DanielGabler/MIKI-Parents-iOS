@@ -6,71 +6,122 @@
 MIKI Parents iOS
 
 MIKI Parents iOS wurde für verantwortungsbewusstes Parenting entwickelt.
-Im Foku der App stehen Kinder gleichermaßen wie Eltern, Familienangehörige sowie optionale Kontrollorgane oder Behörden
-
+<br>
+Im Foku der App stehen Kinder gleichermaßen wie Eltern, Familienangehörige sowie optionale Kontrollorgane oder Behörden.
+<br>
+<br>
 MIKI Parents ist bereits für Android verfügbar.
+<br>
+<br>
 Sämtliche Features innerhalb der App werden regelmäßig ergänzt bzw. neu hinzugefügt um ein umfassendes Nutzererlebnis zu ermöglichen.
 
 
 ## Installation
 
 MIKI Parents ist aktuell als Xcode Swift Projektdatei via GitHub verfügbar.
+<br>
 MIKI Parents wird zukünftig als Testflight verfügbar sein.
+<br>
 MIKI Parents wird zukünftig im Apple App Store für iOS verfügbar sein.
 
 
 ## Nutzung
 
 MIKI Parents soll bei Alltagsproblemen ein Bindeglied zwischen Vernatwortung, Bewusstsein & Kommunikation ermöglichen.
-
+<br>
+<br>
 MIKI Parents kann nicht alle Probleme lösen.
+<br>
 MIKI Parents kann lösungsorientiert zur Seite stehen.
+<br>
+<br>
+MIKI Parents hilft schon jetzt bei der Hausaufgbanekontrolle, Terminplanung und gibt eine bersicht der Lernfortschritte deiner Kinder.
+<br>
+<br>
+Zukünftig wird MIKI Parents weitere Tools erhalten, um die Benutzerfreundlichkeit zu steigern.
 
 
 ## Projektaufbau
 
-Die App ist nach dem **MVVM-Muster** (Model-View-ViewModel) strukturiert.
-Dies sorgt für eine klare Trennung der Logik und Benutzeroberfläche und erleichtert Wartung und Erweiterungen. 
-
-- **Model**: Beinhaltet die Datenstrukturen für Events und Benutzer.
-- **View**: Stellt die Benutzeroberfläche dar und zeigt die Events an.
-- **ViewModel**: Handhabt die Logik zum Abrufen und Verarbeiten der Event-Daten. Verbindet die View mit den Model-Daten.
+Die App ist nach dem MVVM-Muster (Model-View-ViewModel) strukturiert und ermöglicht eine klare Trennung der Logik sowie Benutzeroberfläche.
 
 
 ## Prozess
 
-Konkurrenzanalyse,
-Personas,
-User Stories und Feature Requirements, 
-User Flow Diagram,
-Crazy 8s,
-Low- Fi Wireframes,
-Paper Prototype,
-Moodboard, 
-Style Guide,
-Mid-Fi Wireframes,
-High-Fi Wireframes,
-Prototype,
-Preference Test: Durchführung und Auswertung, 
-Nutzertest und Anpassungen an den High-Fi Wireframes,
+Konkurrenzanalyse
+<br>
+Personas
+<br>
+User Stories und Feature Requirements
+<br>
+User Flow Diagram
+<br>
+Crazy 8s
+<br>
+Low- Fi Wireframes
+<br>
+Paper Prototype
+<br>
+Moodboard
+<br>
+Style Guide
+<br>
+Mid-Fi Wireframes
+<br>
+High-Fi Wireframes
+<br>
+Prototype
+<br>
+Preference Test: Durchführung und Auswertung
+<br>
+Nutzertest und Anpassungen an den High-Fi Wireframes
 
 
 ## Tools
 
-Frames,
-Crazy 8s,
-Mind Map,
-Konkurrenzanalyse,
-Nutzerinterviews mit einem Prototypen,
-Figma,
-Xcode,
-Google Firebase,
-Google Firestore,
-Ferienkalender API,
-Apple iTunes API,
-MVVM,
+Frames
+<br>
+Crazy 8s
+<br>
+Mind Map
+<br>
+Konkurrenzanalyse
+<br>
+Nutzerinterviews mit einem Prototypen
+<br>
+Figma
+<br>
+Xcode
+<br>
+Google Firebase Authentication
+<br>
+Google Firebase Firestore
+<br>
+Ferienkalender API
+<br>
+Apple iTunes API
+<br>
+MVVM
+
+
+## Design
+![Evolution Wireframes](wireframe-evolution.png)
 
 
 ## Lizenz
-Aktuell ist keine Lizenz erforderlich.
+Aktuell ist keine Lizenz verfügbar.
+
+
+## Kontakt
+
+Entwickler: Daniel Gabler
+<br>
+E-Mail: daniel-gabler-dev@web.de
+<br>
+Internet: www.miki-apps.com
+
+
+
+
+
 
