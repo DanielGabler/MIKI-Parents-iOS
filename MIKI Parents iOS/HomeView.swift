@@ -30,8 +30,8 @@ struct HomeView: View {
 
             KidsMusicTabView()
                 .tabItem {
-                    Image(systemName: "music.note.list")
-                    Text("Kids Music")
+                    Image(systemName: "music.note")
+                    Text("Kinderlieder")
                 }
             
             SettingsTabView()
@@ -39,8 +39,10 @@ struct HomeView: View {
                     Image(systemName: "gear")
                     Text("Einstellungen")
                 }
+                .environment(userViewModel)
         }
     }
+    @Environment(UserViewModel.self) private var userViewModel
 }
 #Preview {
     HomeView()

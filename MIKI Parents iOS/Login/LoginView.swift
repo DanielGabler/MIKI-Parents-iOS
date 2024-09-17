@@ -8,37 +8,35 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var viewModel = LoginViewModel()
-
+    
+    @State var email = ""
+    @State var password = ""
+    @State var loginSuccess = false
+    @State var errorMessage: String?
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 // Textfelder für Email und Passwort
-                TextField("Email", text: $viewModel.email)
+                TextField("Email", text: $email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-
-                SecureField("Password", text: $viewModel.password)
+                
+                SecureField("Password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-
+                
                 // Login Button
                 Button("Login") {
-                    viewModel.login()
+                    attemptSignIn()
                 }
                 .padding()
-
+                
                 // Fehlermeldung anzeigen
-                if let errorMessage = viewModel.errorMessage {
-                    Text(errorMessage)
-                        .foregroundColor(.red)
-                }
-
-                // Navigation zu HomeView bei erfolgreichem Login
-                NavigationLink(destination: HomeView(), isActive: $viewModel.loginSuccess) {
-                    EmptyView()
-                }
-                .padding()
+                
+                
+                
+                
                 // Button zur Registrierung
                 VStack {
                     Text("Noch keinen Account?")
@@ -48,13 +46,25 @@ struct LoginView: View {
                     }
                 }
                 .padding(.top, 20)
-
+                
             }
             .padding()
             .navigationTitle("MIKI Parents iOS")
         }
     }
+    private func attemptSignIn() {
+        Task {
+            do {
+                try await userViewModel.signIn(email: email, password: password)
+            } catch {
+                print("Error")
+            }
+        }
+    }
+    @Environment(UserViewModel.self) private var userViewModel
 }
+
+
 
 
 #Preview {

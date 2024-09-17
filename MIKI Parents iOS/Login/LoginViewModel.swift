@@ -8,7 +8,14 @@
 import FirebaseAuth
 import Combine
 
-class LoginViewModel: ObservableObject {
+class LoginViewModel: Observable {
+    
+    var user: User?
+        
+        var isUserSignedIn: Bool {
+            user != nil
+        }
+    
     @Published var email = ""
     @Published var password = ""
     @Published var loginSuccess = false
