@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 import FirebaseFirestoreCombineSwift
 
 struct FirestoreItem: Identifiable, Codable {

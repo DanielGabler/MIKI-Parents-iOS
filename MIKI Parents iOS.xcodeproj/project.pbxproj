@@ -8,17 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		1C0FD4F52C90926800B1DBEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C0FD4F42C90926800B1DBEA /* GoogleService-Info.plist */; };
-		1C0FD4F72C9432C300B1DBEA /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FD4F62C9432C300B1DBEA /* SettingsTabView.swift */; };
-		1C0FD4F92C9433DD00B1DBEA /* KidsMusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FD4F82C9433DD00B1DBEA /* KidsMusicItem.swift */; };
-		1C0FD4FB2C94342700B1DBEA /* KidsMusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FD4FA2C94342700B1DBEA /* KidsMusicViewModel.swift */; };
-		1C0FD4FD2C9434B000B1DBEA /* KidsMusicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FD4FC2C9434B000B1DBEA /* KidsMusicDetailView.swift */; };
 		1C113EB22C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C113EB12C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift */; };
-		1C113EB42C874FBB00F09D65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C113EB32C874FBB00F09D65 /* ContentView.swift */; };
 		1C113EB62C874FBC00F09D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C113EB52C874FBC00F09D65 /* Assets.xcassets */; };
 		1C113EB92C874FBC00F09D65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C113EB82C874FBC00F09D65 /* Preview Assets.xcassets */; };
 		1C113EC32C874FBC00F09D65 /* MIKI_Parents_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C113EC22C874FBC00F09D65 /* MIKI_Parents_iOSTests.swift */; };
 		1C113ECD2C874FBC00F09D65 /* MIKI_Parents_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C113ECC2C874FBC00F09D65 /* MIKI_Parents_iOSUITests.swift */; };
 		1C113ECF2C874FBC00F09D65 /* MIKI_Parents_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C113ECE2C874FBC00F09D65 /* MIKI_Parents_iOSUITestsLaunchTests.swift */; };
+		1CB2E4D22C99C87E003FDFC0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4CF2C99C87E003FDFC0 /* LoginView.swift */; };
+		1CB2E4D32C99C87E003FDFC0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4D02C99C87E003FDFC0 /* LoginViewModel.swift */; };
+		1CB2E4D72C99C890003FDFC0 /* KidsMusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4D42C99C890003FDFC0 /* KidsMusicItem.swift */; };
+		1CB2E4D82C99C890003FDFC0 /* KidsMusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4D52C99C890003FDFC0 /* KidsMusicViewModel.swift */; };
+		1CB2E4EA2C99C8D4003FDFC0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4D92C99C8D4003FDFC0 /* RegisterView.swift */; };
+		1CB2E4EB2C99C8D4003FDFC0 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4DA2C99C8D4003FDFC0 /* RegisterViewModel.swift */; };
+		1CB2E4EC2C99C8D4003FDFC0 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4DC2C99C8D4003FDFC0 /* HomeTabView.swift */; };
+		1CB2E4ED2C99C8D4003FDFC0 /* HomeworkTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4DD2C99C8D4003FDFC0 /* HomeworkTabView.swift */; };
+		1CB2E4EE2C99C8D4003FDFC0 /* KidsMusicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4DE2C99C8D4003FDFC0 /* KidsMusicDetailView.swift */; };
+		1CB2E4EF2C99C8D4003FDFC0 /* KidsMusicTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4DF2C99C8D4003FDFC0 /* KidsMusicTabView.swift */; };
+		1CB2E4F02C99C8D4003FDFC0 /* NotesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4E02C99C8D4003FDFC0 /* NotesTabView.swift */; };
+		1CB2E4F12C99C8D4003FDFC0 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4E12C99C8D4003FDFC0 /* SettingsTabView.swift */; };
+		1CB2E4F22C99C8D4003FDFC0 /* FirestoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4E32C99C8D4003FDFC0 /* FirestoreItem.swift */; };
+		1CB2E4F32C99C8D4003FDFC0 /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4E42C99C8D4003FDFC0 /* NewPostView.swift */; };
+		1CB2E4F42C99C8D4003FDFC0 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4E52C99C8D4003FDFC0 /* NotesViewModel.swift */; };
+		1CB2E4F52C99C8D4003FDFC0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4E62C99C8D4003FDFC0 /* Post.swift */; };
+		1CB2E4F62C99C8D4003FDFC0 /* SettingsTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4E82C99C8D4003FDFC0 /* SettingsTabViewModel.swift */; };
+		1CB2E4F82C99C933003FDFC0 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4F72C99C933003FDFC0 /* UserViewModel.swift */; };
 		1CE2F5A82C90898A000F818C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE2F5A72C90898A000F818C /* FirebaseAnalytics */; };
 		1CE2F5AA2C90898A000F818C /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE2F5A92C90898A000F818C /* FirebaseAnalyticsOnDeviceConversion */; };
 		1CE2F5AC2C90898A000F818C /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE2F5AB2C90898A000F818C /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -42,15 +55,7 @@
 		1CE2F5D02C90898A000F818C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE2F5CF2C90898A000F818C /* FirebaseStorage */; };
 		1CE2F5D22C90898A000F818C /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE2F5D12C90898A000F818C /* FirebaseStorageCombine-Community */; };
 		1CE2F5D42C90898A000F818C /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE2F5D32C90898A000F818C /* FirebaseVertexAI-Preview */; };
-		1CE2F5D62C908A98000F818C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5D52C908A98000F818C /* LoginViewModel.swift */; };
-		1CE2F5D82C908ACE000F818C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5D72C908ACE000F818C /* LoginView.swift */; };
-		1CE2F5DA2C908B44000F818C /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5D92C908B44000F818C /* RegisterViewModel.swift */; };
-		1CE2F5DC2C908B7D000F818C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5DB2C908B7D000F818C /* RegisterView.swift */; };
 		1CE2F5DE2C908BF6000F818C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5DD2C908BF6000F818C /* HomeView.swift */; };
-		1CE2F5E02C908C33000F818C /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5DF2C908C33000F818C /* HomeTabView.swift */; };
-		1CE2F5E22C908C66000F818C /* NotesTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5E12C908C66000F818C /* NotesTabView.swift */; };
-		1CE2F5E42C908C96000F818C /* HomeworkTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5E32C908C96000F818C /* HomeworkTabView.swift */; };
-		1CE2F5E62C908CA7000F818C /* KidsMusicTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE2F5E52C908CA7000F818C /* KidsMusicTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,13 +77,8 @@
 
 /* Begin PBXFileReference section */
 		1C0FD4F42C90926800B1DBEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1C0FD4F62C9432C300B1DBEA /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
-		1C0FD4F82C9433DD00B1DBEA /* KidsMusicItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsMusicItem.swift; sourceTree = "<group>"; };
-		1C0FD4FA2C94342700B1DBEA /* KidsMusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsMusicViewModel.swift; sourceTree = "<group>"; };
-		1C0FD4FC2C9434B000B1DBEA /* KidsMusicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsMusicDetailView.swift; sourceTree = "<group>"; };
 		1C113EAE2C874FBB00F09D65 /* MIKI Parents iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MIKI Parents iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C113EB12C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIKI_Parents_iOSApp.swift; sourceTree = "<group>"; };
-		1C113EB32C874FBB00F09D65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1C113EB52C874FBC00F09D65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C113EB82C874FBC00F09D65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1C113EBE2C874FBC00F09D65 /* MIKI Parents iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MIKI Parents iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,15 +86,25 @@
 		1C113EC82C874FBC00F09D65 /* MIKI Parents iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MIKI Parents iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C113ECC2C874FBC00F09D65 /* MIKI_Parents_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIKI_Parents_iOSUITests.swift; sourceTree = "<group>"; };
 		1C113ECE2C874FBC00F09D65 /* MIKI_Parents_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIKI_Parents_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		1CE2F5D52C908A98000F818C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		1CE2F5D72C908ACE000F818C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		1CE2F5D92C908B44000F818C /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
-		1CE2F5DB2C908B7D000F818C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		1CB2E4CF2C99C87E003FDFC0 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1CB2E4D02C99C87E003FDFC0 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1CB2E4D42C99C890003FDFC0 /* KidsMusicItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KidsMusicItem.swift; sourceTree = "<group>"; };
+		1CB2E4D52C99C890003FDFC0 /* KidsMusicViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KidsMusicViewModel.swift; sourceTree = "<group>"; };
+		1CB2E4D92C99C8D4003FDFC0 /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		1CB2E4DA2C99C8D4003FDFC0 /* RegisterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		1CB2E4DC2C99C8D4003FDFC0 /* HomeTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+		1CB2E4DD2C99C8D4003FDFC0 /* HomeworkTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeworkTabView.swift; sourceTree = "<group>"; };
+		1CB2E4DE2C99C8D4003FDFC0 /* KidsMusicDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KidsMusicDetailView.swift; sourceTree = "<group>"; };
+		1CB2E4DF2C99C8D4003FDFC0 /* KidsMusicTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KidsMusicTabView.swift; sourceTree = "<group>"; };
+		1CB2E4E02C99C8D4003FDFC0 /* NotesTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesTabView.swift; sourceTree = "<group>"; };
+		1CB2E4E12C99C8D4003FDFC0 /* SettingsTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		1CB2E4E32C99C8D4003FDFC0 /* FirestoreItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirestoreItem.swift; sourceTree = "<group>"; };
+		1CB2E4E42C99C8D4003FDFC0 /* NewPostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
+		1CB2E4E52C99C8D4003FDFC0 /* NotesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
+		1CB2E4E62C99C8D4003FDFC0 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		1CB2E4E82C99C8D4003FDFC0 /* SettingsTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabViewModel.swift; sourceTree = "<group>"; };
+		1CB2E4F72C99C933003FDFC0 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		1CE2F5DD2C908BF6000F818C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		1CE2F5DF2C908C33000F818C /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
-		1CE2F5E12C908C66000F818C /* NotesTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTabView.swift; sourceTree = "<group>"; };
-		1CE2F5E32C908C96000F818C /* HomeworkTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkTabView.swift; sourceTree = "<group>"; };
-		1CE2F5E52C908CA7000F818C /* KidsMusicTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsMusicTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,21 +178,15 @@
 		1C113EB02C874FBB00F09D65 /* MIKI Parents iOS */ = {
 			isa = PBXGroup;
 			children = (
-				1CE2F5D72C908ACE000F818C /* LoginView.swift */,
-				1CE2F5DB2C908B7D000F818C /* RegisterView.swift */,
-				1CE2F5DD2C908BF6000F818C /* HomeView.swift */,
-				1CE2F5DF2C908C33000F818C /* HomeTabView.swift */,
-				1CE2F5E12C908C66000F818C /* NotesTabView.swift */,
-				1CE2F5E32C908C96000F818C /* HomeworkTabView.swift */,
-				1CE2F5E52C908CA7000F818C /* KidsMusicTabView.swift */,
-				1C0FD4F82C9433DD00B1DBEA /* KidsMusicItem.swift */,
-				1C0FD4FC2C9434B000B1DBEA /* KidsMusicDetailView.swift */,
-				1C0FD4F62C9432C300B1DBEA /* SettingsTabView.swift */,
-				1CE2F5D52C908A98000F818C /* LoginViewModel.swift */,
-				1CE2F5D92C908B44000F818C /* RegisterViewModel.swift */,
-				1C0FD4FA2C94342700B1DBEA /* KidsMusicViewModel.swift */,
 				1C113EB12C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift */,
-				1C113EB32C874FBB00F09D65 /* ContentView.swift */,
+				1CE2F5DD2C908BF6000F818C /* HomeView.swift */,
+				1CB2E4F72C99C933003FDFC0 /* UserViewModel.swift */,
+				1CB2E4D62C99C890003FDFC0 /* Kids Music */,
+				1CB2E4D12C99C87E003FDFC0 /* Login */,
+				1CB2E4E22C99C8D4003FDFC0 /* Menu */,
+				1CB2E4E72C99C8D4003FDFC0 /* Notes */,
+				1CB2E4DB2C99C8D4003FDFC0 /* Register */,
+				1CB2E4E92C99C8D4003FDFC0 /* Settings */,
 				1C113EB52C874FBC00F09D65 /* Assets.xcassets */,
 				1C0FD4F42C90926800B1DBEA /* GoogleService-Info.plist */,
 				1C113EB72C874FBC00F09D65 /* Preview Content */,
@@ -213,6 +217,66 @@
 				1C113ECE2C874FBC00F09D65 /* MIKI_Parents_iOSUITestsLaunchTests.swift */,
 			);
 			path = "MIKI Parents iOSUITests";
+			sourceTree = "<group>";
+		};
+		1CB2E4D12C99C87E003FDFC0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1CB2E4CF2C99C87E003FDFC0 /* LoginView.swift */,
+				1CB2E4D02C99C87E003FDFC0 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1CB2E4D62C99C890003FDFC0 /* Kids Music */ = {
+			isa = PBXGroup;
+			children = (
+				1CB2E4D42C99C890003FDFC0 /* KidsMusicItem.swift */,
+				1CB2E4D52C99C890003FDFC0 /* KidsMusicViewModel.swift */,
+			);
+			name = "Kids Music";
+			path = "MIKI Parents iOS/Kids Music";
+			sourceTree = SOURCE_ROOT;
+		};
+		1CB2E4DB2C99C8D4003FDFC0 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				1CB2E4D92C99C8D4003FDFC0 /* RegisterView.swift */,
+				1CB2E4DA2C99C8D4003FDFC0 /* RegisterViewModel.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		1CB2E4E22C99C8D4003FDFC0 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				1CB2E4DC2C99C8D4003FDFC0 /* HomeTabView.swift */,
+				1CB2E4DD2C99C8D4003FDFC0 /* HomeworkTabView.swift */,
+				1CB2E4DE2C99C8D4003FDFC0 /* KidsMusicDetailView.swift */,
+				1CB2E4DF2C99C8D4003FDFC0 /* KidsMusicTabView.swift */,
+				1CB2E4E02C99C8D4003FDFC0 /* NotesTabView.swift */,
+				1CB2E4E12C99C8D4003FDFC0 /* SettingsTabView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		1CB2E4E72C99C8D4003FDFC0 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				1CB2E4E32C99C8D4003FDFC0 /* FirestoreItem.swift */,
+				1CB2E4E42C99C8D4003FDFC0 /* NewPostView.swift */,
+				1CB2E4E52C99C8D4003FDFC0 /* NotesViewModel.swift */,
+				1CB2E4E62C99C8D4003FDFC0 /* Post.swift */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		1CB2E4E92C99C8D4003FDFC0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1CB2E4E82C99C8D4003FDFC0 /* SettingsTabViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,21 +438,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C0FD4F72C9432C300B1DBEA /* SettingsTabView.swift in Sources */,
-				1C113EB42C874FBB00F09D65 /* ContentView.swift in Sources */,
-				1C0FD4FD2C9434B000B1DBEA /* KidsMusicDetailView.swift in Sources */,
+				1CB2E4EA2C99C8D4003FDFC0 /* RegisterView.swift in Sources */,
 				1CE2F5DE2C908BF6000F818C /* HomeView.swift in Sources */,
-				1CE2F5E22C908C66000F818C /* NotesTabView.swift in Sources */,
-				1CE2F5E42C908C96000F818C /* HomeworkTabView.swift in Sources */,
-				1C0FD4F92C9433DD00B1DBEA /* KidsMusicItem.swift in Sources */,
-				1CE2F5DA2C908B44000F818C /* RegisterViewModel.swift in Sources */,
-				1CE2F5E02C908C33000F818C /* HomeTabView.swift in Sources */,
+				1CB2E4EF2C99C8D4003FDFC0 /* KidsMusicTabView.swift in Sources */,
+				1CB2E4EC2C99C8D4003FDFC0 /* HomeTabView.swift in Sources */,
+				1CB2E4D82C99C890003FDFC0 /* KidsMusicViewModel.swift in Sources */,
+				1CB2E4F62C99C8D4003FDFC0 /* SettingsTabViewModel.swift in Sources */,
+				1CB2E4F22C99C8D4003FDFC0 /* FirestoreItem.swift in Sources */,
 				1C113EB22C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift in Sources */,
-				1CE2F5E62C908CA7000F818C /* KidsMusicTabView.swift in Sources */,
-				1CE2F5DC2C908B7D000F818C /* RegisterView.swift in Sources */,
-				1CE2F5D82C908ACE000F818C /* LoginView.swift in Sources */,
-				1CE2F5D62C908A98000F818C /* LoginViewModel.swift in Sources */,
-				1C0FD4FB2C94342700B1DBEA /* KidsMusicViewModel.swift in Sources */,
+				1CB2E4D32C99C87E003FDFC0 /* LoginViewModel.swift in Sources */,
+				1CB2E4EE2C99C8D4003FDFC0 /* KidsMusicDetailView.swift in Sources */,
+				1CB2E4F02C99C8D4003FDFC0 /* NotesTabView.swift in Sources */,
+				1CB2E4F12C99C8D4003FDFC0 /* SettingsTabView.swift in Sources */,
+				1CB2E4F52C99C8D4003FDFC0 /* Post.swift in Sources */,
+				1CB2E4F82C99C933003FDFC0 /* UserViewModel.swift in Sources */,
+				1CB2E4D72C99C890003FDFC0 /* KidsMusicItem.swift in Sources */,
+				1CB2E4EB2C99C8D4003FDFC0 /* RegisterViewModel.swift in Sources */,
+				1CB2E4ED2C99C8D4003FDFC0 /* HomeworkTabView.swift in Sources */,
+				1CB2E4F42C99C8D4003FDFC0 /* NotesViewModel.swift in Sources */,
+				1CB2E4D22C99C87E003FDFC0 /* LoginView.swift in Sources */,
+				1CB2E4F32C99C8D4003FDFC0 /* NewPostView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

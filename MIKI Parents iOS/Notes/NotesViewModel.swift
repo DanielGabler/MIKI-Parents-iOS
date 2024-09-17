@@ -16,7 +16,7 @@ class NotesViewModel: ObservableObject {
     private var db = Firestore.firestore()
 
     func fetchItems() {
-        db.collection("items").getDocuments { snapshot, error in
+        db.collection("Posts").getDocuments { snapshot, error in
             if let error = error {
                 self.errorMessage = "Error fetching data: \(error.localizedDescription)"
                 return
