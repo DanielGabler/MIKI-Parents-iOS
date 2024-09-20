@@ -62,6 +62,7 @@
 		1CF52E682C9ABAAD00EC59C2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF52E672C9ABAAD00EC59C2 /* ImagePicker.swift */; };
 		1CF52E6A2C9ABC2E00EC59C2 /* FileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF52E692C9ABC2E00EC59C2 /* FileListView.swift */; };
 		1CF52E6C2C9ABC6400EC59C2 /* FileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF52E6B2C9ABC6400EC59C2 /* FileDetailView.swift */; };
+		1CF52E6E2C9B059800EC59C2 /* FullScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF52E6D2C9B059800EC59C2 /* FullScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		1CF52E672C9ABAAD00EC59C2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1CF52E692C9ABC2E00EC59C2 /* FileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListView.swift; sourceTree = "<group>"; };
 		1CF52E6B2C9ABC6400EC59C2 /* FileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDetailView.swift; sourceTree = "<group>"; };
+		1CF52E6D2C9B059800EC59C2 /* FullScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +303,7 @@
 				1CF52E672C9ABAAD00EC59C2 /* ImagePicker.swift */,
 				1CF52E692C9ABC2E00EC59C2 /* FileListView.swift */,
 				1CF52E6B2C9ABC6400EC59C2 /* FileDetailView.swift */,
+				1CF52E6D2C9B059800EC59C2 /* FullScreenView.swift */,
 			);
 			path = Homework;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				1CF52E6A2C9ABC2E00EC59C2 /* FileListView.swift in Sources */,
 				1CB2E4F12C99C8D4003FDFC0 /* SettingsTabView.swift in Sources */,
 				1CF52E6C2C9ABC6400EC59C2 /* FileDetailView.swift in Sources */,
+				1CF52E6E2C9B059800EC59C2 /* FullScreenView.swift in Sources */,
 				1CF52E642C9AB6AB00EC59C2 /* FileItem.swift in Sources */,
 				1CB2E4F52C99C8D4003FDFC0 /* Post.swift in Sources */,
 				1CB2E4F82C99C933003FDFC0 /* UserViewModel.swift in Sources */,
