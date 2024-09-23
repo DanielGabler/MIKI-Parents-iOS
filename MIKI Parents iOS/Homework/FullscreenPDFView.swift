@@ -7,15 +7,25 @@
 
 import PDFKit
 import SwiftUI
+import FirebaseCore
 
 struct FullscreenPDFView: View {
     let pdfUrl: URL
-
+    let uploadDate: Timestamp?
+    
     var body: some View {
-        PDFKitView(url: pdfUrl)
-            .edgesIgnoringSafeArea(.all) // Zeige das PDF im Vollbildmodus an
+        VStack {
+            PDFKitView(url: pdfUrl)
+                .edgesIgnoringSafeArea(.all)
+
+            if let date = uploadDate?.dateValue() {
+                Text("Uploaded on: \(date, formatter: dateFormatter)")
+                    .padding()
+            }
+        }
     }
 }
+
 
 struct PDFKitView: UIViewRepresentable {
     let url: URL

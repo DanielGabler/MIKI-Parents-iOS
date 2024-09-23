@@ -16,60 +16,66 @@ struct HomeworkTabView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List {
-                    ForEach($items) { item in
+                ScrollView {
+                    ForEach(items) { item in // Verwende nur items
                         HStack {
                             // Anzeige der Datei (Bild oder PDF Vorschau)
-                            let imageUrl = item.wrappedValue.imageUrl
-                            if let url = URL(string: imageUrl) {
+                            let imageUrl = item.imageUrl
+                            if let url = URL(string: imageUrl) { // Korrektur hier
                                 if imageUrl.lowercased().hasSuffix(".pdf") {
                                     // PDF Vorschau
-                                    NavigationLink(destination: FullscreenPDFView(pdfUrl: url)) {
+                                    NavigationLink(destination: FullscreenPDFView(pdfUrl: url, uploadDate: Timestamp())) {
                                         PDFThumbnailView(url: url)
-                                            .frame(width: 50, height: 50)
+                                            .frame(width: 80, height: 80)
                                             .cornerRadius(16)
                                     }
                                 } else {
                                     // Bildvorschau
-                                    NavigationLink(destination: FullscreenView(imageUrl: url)) {
-                                        AsyncImage(url: url) { image in
-                                            image
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 50, height: 50)
-                                                .cornerRadius(16)
-                                        } placeholder: {
-                                            Color.gray
-                                                .frame(width: 50, height: 50)
-                                                .cornerRadius(16)
+                                    NavigationLink(destination: FullscreenView(imageUrl: url, uploadDate: Timestamp())) {
+                                        HStack {
+                                            AsyncImage(url: url) { image in
+                                                image
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 80, height: 80)
+                                                    .cornerRadius(16)
+                                            } placeholder: {
+                                                Color.gray
+                                                    .frame(width: 80, height: 80)
+                                                    .cornerRadius(16)
+                                            }
+                                            VStack(alignment: .leading) {
+                                                Text(item.name) // Name der Datei
+                                                    .font(.headline)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(Color.gray)
+                                                // Zeige das Upload-Datum an
+                                                Text(dateFormatter.string(from: item.uploadDate?.dateValue() ?? Date()))
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.gray)
+                                            }
                                         }
-                                        Text(item.wrappedValue.name) // Name der Datei
-                                            .font(.headline)
                                     }
-                                    
                                 }
-                                
                             } else {
                                 Image(systemName: "doc")
-                                    .frame(width: 50, height: 50)
+                                    .frame(width: 80, height: 80)
                                     .foregroundColor(.gray)
-                                
                             }
-
-                            
 
                             Spacer()
 
                             // Herzchen-Schaltfläche
                             Button(action: {
-                                toggleSeenStatus(for: item.wrappedValue)
+                                toggleSeenStatus(for: item) // Korrektur hier
                             }) {
-                                Image(systemName: item.wrappedValue.isSeen ? "checkmark.circle.fill" : "checkmark.circle")
-                                    .foregroundColor(item.wrappedValue.isSeen ? .green : .red)
+                                Image(systemName: item.isSeen ? "checkmark.circle.fill" : "checkmark.circle")
+                                    .foregroundColor(item.isSeen ? .green : .red)
                             }
                         }
                     }
                 }
+                .padding()
             }
             .navigationBarTitle("Aufgaben")
             .navigationBarItems(trailing: Button(action: {
@@ -93,10 +99,17 @@ struct HomeworkTabView: View {
                 print("Error fetching files: \(error)")
                 return
             }
-            
+
             self.items = snapshot?.documents.compactMap { document in
                 try? document.data(as: FileItem.self)
             } ?? []
+
+            // Sortiere die Dateien nach dem Upload-Datum (neuestes zuerst)
+            self.items.sort {
+                let date1 = $0.uploadDate?.dateValue() ?? Date.distantPast
+                let date2 = $1.uploadDate?.dateValue() ?? Date.distantPast
+                return date1 > date2
+            }
         }
     }
     
