@@ -101,7 +101,7 @@ struct UploadFileView: View {
             do {
                 let documentData = try Data(contentsOf: documentUrl)
                 let storage = Storage.storage()
-                let storageRef = storage.reference().child("documents/\(UUID().uuidString).pdf")
+                let storageRef = storage.reference().child("images/\(UUID().uuidString).pdf")
                 
                 storageRef.putData(documentData, metadata: nil) { metadata, error in
                     if let error = error {

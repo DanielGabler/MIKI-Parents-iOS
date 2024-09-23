@@ -92,8 +92,19 @@ struct KidsMusicDetailView: View {
 
                 Spacer()
 
-                // Links zu iTunes und Spotify
+                // Links zu iTunes, Spotify und YouTube
                 VStack(spacing: 20) {
+                    
+                    // YouTube Link
+                    if let youtubeUrl = createYouTubeUrl(trackName: musicItem.trackName, artistName: musicItem.artistName) {
+                        Link("Find on YouTube", destination: youtubeUrl)
+                            .font(.headline)
+                            .padding()
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    
                     // iTunes Link
                     if let iTunesUrl = musicItem.trackViewUrl, let url = URL(string: iTunesUrl) {
                         Link("Buy on iTunes", destination: url)
@@ -103,16 +114,8 @@ struct KidsMusicDetailView: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
+                
 
-                    // Spotify Link
-                    if let spotifyUrl = createSpotifyUrl(trackName: musicItem.trackName, artistName: musicItem.artistName) {
-                        Link("Find on Spotify", destination: spotifyUrl)
-                            .font(.headline)
-                            .padding()
-                            .background(Color.green)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
                 }
 
                 Spacer()
@@ -156,10 +159,12 @@ struct KidsMusicDetailView: View {
         }
         return date
     }
-
-    // Funktion zum Erstellen des Spotify-Suchlinks
-    private func createSpotifyUrl(trackName: String, artistName: String) -> URL? {
+    
+    // Funktion zum Erstellen des YouTube-Suchlinks
+    private func createYouTubeUrl(trackName: String, artistName: String) -> URL? {
         let searchQuery = "\(trackName) \(artistName)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        return URL(string: "https://open.spotify.com/search/\(searchQuery ?? "")")
+        return URL(string: "https://www.youtube.com/results?search_query=\(searchQuery ?? "")")
     }
+
+    
 }

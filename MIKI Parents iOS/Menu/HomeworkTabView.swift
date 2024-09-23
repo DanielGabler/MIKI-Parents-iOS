@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import PDFKit
 
 struct HomeworkTabView: View {
     @State private var isShowingUploadSheet = false
@@ -16,40 +17,55 @@ struct HomeworkTabView: View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(items) { item in
+                    ForEach($items) { item in
                         HStack {
-                            // Anzeige der Datei (Bild oder Symbol)
-                            let imageUrl = item.imageUrl
+                            // Anzeige der Datei (Bild oder PDF Vorschau)
+                            let imageUrl = item.wrappedValue.imageUrl
                             if let url = URL(string: imageUrl) {
-                                
-                                AsyncImage(url: url) { image in
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 50, height: 50)
-                                        .cornerRadius(8)
-                                } placeholder: {
-                                    Color.gray
-                                        .frame(width: 50, height: 50)
-                                        .cornerRadius(8)
+                                if imageUrl.lowercased().hasSuffix(".pdf") {
+                                    // PDF Vorschau
+                                    NavigationLink(destination: FullscreenPDFView(pdfUrl: url)) {
+                                        PDFThumbnailView(url: url)
+                                            .frame(width: 50, height: 50)
+                                            .cornerRadius(16)
+                                    }
+                                } else {
+                                    // Bildvorschau
+                                    NavigationLink(destination: FullscreenView(imageUrl: url)) {
+                                        AsyncImage(url: url) { image in
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 50, height: 50)
+                                                .cornerRadius(16)
+                                        } placeholder: {
+                                            Color.gray
+                                                .frame(width: 50, height: 50)
+                                                .cornerRadius(16)
+                                        }
+                                        Text(item.wrappedValue.name) // Name der Datei
+                                            .font(.headline)
+                                    }
+                                    
                                 }
+                                
                             } else {
                                 Image(systemName: "doc")
                                     .frame(width: 50, height: 50)
                                     .foregroundColor(.gray)
+                                
                             }
+
                             
-                            Text(item.name)
-                                .font(.headline)
-                            
+
                             Spacer()
-                            
+
                             // Herzchen-Schaltfläche
                             Button(action: {
-                                toggleSeenStatus(for: item)
+                                toggleSeenStatus(for: item.wrappedValue)
                             }) {
-                                Image(systemName: item.isSeen ? "heart.fill" : "heart")
-                                    .foregroundColor(item.isSeen ? .red : .gray)
+                                Image(systemName: item.wrappedValue.isSeen ? "checkmark.circle.fill" : "checkmark.circle")
+                                    .foregroundColor(item.wrappedValue.isSeen ? .green : .red)
                             }
                         }
                     }
@@ -57,12 +73,12 @@ struct HomeworkTabView: View {
             }
             .navigationBarTitle("Aufgaben")
             .navigationBarItems(trailing: Button(action: {
-                isShowingUploadSheet.toggle() // Öffnet das Sheet
+                isShowingUploadSheet.toggle() // Öffnet das Upload-Sheet
             }) {
                 Image(systemName: "plus")
                     .font(.title)
             })
-            .onAppear(perform: fetchItems) // Daten laden, wenn die Seite erscheint
+            .onAppear(perform: fetchItems) // Daten beim Erscheinen der Seite laden
             .sheet(isPresented: $isShowingUploadSheet) {
                 UploadFileView(isPresented: $isShowingUploadSheet, onFileUploaded: fetchItems)
             }

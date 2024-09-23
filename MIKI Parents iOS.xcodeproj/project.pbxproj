@@ -62,7 +62,9 @@
 		1CF52E682C9ABAAD00EC59C2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF52E672C9ABAAD00EC59C2 /* ImagePicker.swift */; };
 		1CF52E6A2C9ABC2E00EC59C2 /* FileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF52E692C9ABC2E00EC59C2 /* FileListView.swift */; };
 		1CF52E6C2C9ABC6400EC59C2 /* FileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF52E6B2C9ABC6400EC59C2 /* FileDetailView.swift */; };
-		1CF52E6E2C9B059800EC59C2 /* FullScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF52E6D2C9B059800EC59C2 /* FullScreenView.swift */; };
+		1CF52E722CA19B1F00EC59C2 /* FullscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF52E712CA19B1F00EC59C2 /* FullscreenView.swift */; };
+		1CF52E742CA1AC5300EC59C2 /* PDFThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF52E732CA1AC5300EC59C2 /* PDFThumbnailView.swift */; };
+		1CF52E762CA1ACBD00EC59C2 /* FullscreenPDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF52E752CA1ACBD00EC59C2 /* FullscreenPDFView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,7 +120,9 @@
 		1CF52E672C9ABAAD00EC59C2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1CF52E692C9ABC2E00EC59C2 /* FileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListView.swift; sourceTree = "<group>"; };
 		1CF52E6B2C9ABC6400EC59C2 /* FileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDetailView.swift; sourceTree = "<group>"; };
-		1CF52E6D2C9B059800EC59C2 /* FullScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenView.swift; sourceTree = "<group>"; };
+		1CF52E712CA19B1F00EC59C2 /* FullscreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenView.swift; sourceTree = "<group>"; };
+		1CF52E732CA1AC5300EC59C2 /* PDFThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFThumbnailView.swift; sourceTree = "<group>"; };
+		1CF52E752CA1ACBD00EC59C2 /* FullscreenPDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenPDFView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +250,7 @@
 		1CB2E4D62C99C890003FDFC0 /* Kids Music */ = {
 			isa = PBXGroup;
 			children = (
+				1CB2E4DE2C99C8D4003FDFC0 /* KidsMusicDetailView.swift */,
 				1CB2E4D42C99C890003FDFC0 /* KidsMusicItem.swift */,
 				1CB2E4D52C99C890003FDFC0 /* KidsMusicViewModel.swift */,
 			);
@@ -266,10 +271,9 @@
 			isa = PBXGroup;
 			children = (
 				1CB2E4DC2C99C8D4003FDFC0 /* HomeTabView.swift */,
-				1CB2E4DD2C99C8D4003FDFC0 /* HomeworkTabView.swift */,
-				1CB2E4DE2C99C8D4003FDFC0 /* KidsMusicDetailView.swift */,
-				1CB2E4DF2C99C8D4003FDFC0 /* KidsMusicTabView.swift */,
 				1CB2E4E02C99C8D4003FDFC0 /* NotesTabView.swift */,
+				1CB2E4DD2C99C8D4003FDFC0 /* HomeworkTabView.swift */,
+				1CB2E4DF2C99C8D4003FDFC0 /* KidsMusicTabView.swift */,
 				1CB2E4E12C99C8D4003FDFC0 /* SettingsTabView.swift */,
 			);
 			path = Menu;
@@ -303,7 +307,9 @@
 				1CF52E672C9ABAAD00EC59C2 /* ImagePicker.swift */,
 				1CF52E692C9ABC2E00EC59C2 /* FileListView.swift */,
 				1CF52E6B2C9ABC6400EC59C2 /* FileDetailView.swift */,
-				1CF52E6D2C9B059800EC59C2 /* FullScreenView.swift */,
+				1CF52E712CA19B1F00EC59C2 /* FullscreenView.swift */,
+				1CF52E732CA1AC5300EC59C2 /* PDFThumbnailView.swift */,
+				1CF52E752CA1ACBD00EC59C2 /* FullscreenPDFView.swift */,
 			);
 			path = Homework;
 			sourceTree = "<group>";
@@ -481,18 +487,20 @@
 				1CF52E6A2C9ABC2E00EC59C2 /* FileListView.swift in Sources */,
 				1CB2E4F12C99C8D4003FDFC0 /* SettingsTabView.swift in Sources */,
 				1CF52E6C2C9ABC6400EC59C2 /* FileDetailView.swift in Sources */,
-				1CF52E6E2C9B059800EC59C2 /* FullScreenView.swift in Sources */,
 				1CF52E642C9AB6AB00EC59C2 /* FileItem.swift in Sources */,
 				1CB2E4F52C99C8D4003FDFC0 /* Post.swift in Sources */,
 				1CB2E4F82C99C933003FDFC0 /* UserViewModel.swift in Sources */,
 				1CF52E662C9ABA8300EC59C2 /* DocumentPicker.swift in Sources */,
+				1CF52E742CA1AC5300EC59C2 /* PDFThumbnailView.swift in Sources */,
 				1CB2E4D72C99C890003FDFC0 /* KidsMusicItem.swift in Sources */,
+				1CF52E722CA19B1F00EC59C2 /* FullscreenView.swift in Sources */,
 				1CB2E4EB2C99C8D4003FDFC0 /* RegisterViewModel.swift in Sources */,
 				1CB2E4ED2C99C8D4003FDFC0 /* HomeworkTabView.swift in Sources */,
 				1CB2E4F42C99C8D4003FDFC0 /* NotesViewModel.swift in Sources */,
 				1CB2E4D22C99C87E003FDFC0 /* LoginView.swift in Sources */,
 				1CF52E682C9ABAAD00EC59C2 /* ImagePicker.swift in Sources */,
 				1CF52E622C9AB67B00EC59C2 /* UploadFileView.swift in Sources */,
+				1CF52E762CA1ACBD00EC59C2 /* FullscreenPDFView.swift in Sources */,
 				1CB2E4F32C99C8D4003FDFC0 /* NewPostView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

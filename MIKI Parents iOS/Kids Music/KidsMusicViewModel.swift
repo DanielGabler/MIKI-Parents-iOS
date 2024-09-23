@@ -12,7 +12,7 @@ class KidsMusicViewModel: ObservableObject {
     @Published var errorMessage: String?
 
     func fetchRandomTracks() {
-        guard let url = URL(string: "https://itunes.apple.com/search?term=kinder+lieder&media=music&entity=song&limit=200") else {
+        guard let url = URL(string: "https://itunes.apple.com/search?term=kinder+musik&media=music&entity=song&limit=200") else {
             self.errorMessage = "Invalid URL"
             return
         }
