@@ -23,14 +23,6 @@ struct FullscreenView: View {
             } placeholder: {
                 ProgressView()
             }
-
-            if let date = uploadDate?.dateValue() { // Optionales Datum entpacken
-                Text("Uploaded on: \(date, formatter: dateFormatter)")
-                    .padding()
-            } else {
-                Text("Upload date not available")
-                    .padding()
-            }
         }
     }
 }

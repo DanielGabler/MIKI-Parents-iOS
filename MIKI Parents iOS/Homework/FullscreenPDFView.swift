@@ -17,11 +17,6 @@ struct FullscreenPDFView: View {
         VStack {
             PDFKitView(url: pdfUrl)
                 .edgesIgnoringSafeArea(.all)
-
-            if let date = uploadDate?.dateValue() {
-                Text("Uploaded on: \(date, formatter: dateFormatter)")
-                    .padding()
-            }
         }
     }
 }

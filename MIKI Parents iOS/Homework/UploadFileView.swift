@@ -72,6 +72,11 @@ struct UploadFileView: View {
     
     // Funktion zum Hochladen der Datei (Bild oder Dokument)
     private func uploadFile() {
+        // Überprüfen, ob der Dateiname leer ist, und falls ja, Standardwert setzen
+        if fileName.trimmingCharacters(in: .whitespaces).isEmpty {
+            fileName = "kein Text"
+        }
+        
         // Wenn ein Bild ausgewählt wurde
         if let selectedImage = selectedImage, let imageData = selectedImage.jpegData(compressionQuality: 0.8) {
             let storage = Storage.storage()
@@ -101,7 +106,7 @@ struct UploadFileView: View {
             do {
                 let documentData = try Data(contentsOf: documentUrl)
                 let storage = Storage.storage()
-                let storageRef = storage.reference().child("images/\(UUID().uuidString).pdf")
+                let storageRef = storage.reference().child("documents/\(UUID().uuidString).pdf")
                 
                 storageRef.putData(documentData, metadata: nil) { metadata, error in
                     if let error = error {

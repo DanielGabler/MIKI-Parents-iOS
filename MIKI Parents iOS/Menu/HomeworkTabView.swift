@@ -49,6 +49,7 @@ struct HomeworkTabView: View {
                                                     .font(.headline)
                                                     .fontWeight(.bold)
                                                     .foregroundColor(Color.gray)
+                                                    .multilineTextAlignment(.leading)
                                                 // Zeige das Upload-Datum an
                                                 Text(dateFormatter.string(from: item.uploadDate?.dateValue() ?? Date()))
                                                     .font(.subheadline)
@@ -70,7 +71,7 @@ struct HomeworkTabView: View {
                                 toggleSeenStatus(for: item) // Korrektur hier
                             }) {
                                 Image(systemName: item.isSeen ? "checkmark.circle.fill" : "checkmark.circle")
-                                    .foregroundColor(item.isSeen ? .green : .red)
+                                    .foregroundColor(item.isSeen ? .blue : .gray)
                             }
                         }
                     }

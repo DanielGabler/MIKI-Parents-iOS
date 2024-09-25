@@ -24,6 +24,11 @@ struct NotesTabView: View {
                                 .font(.headline)
                             Text(post.content)
                                 .font(.subheadline)
+                            if let uploadDate = post.uploadDate {
+                                Text("Erstellt: \(formattedDate(uploadDate))")
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                            }
                         }
                         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                             Button(role: .destructive) {
@@ -71,9 +76,17 @@ struct NotesTabView: View {
                 return
             }
             
-            self.posts = snapshot?.documents.compactMap { document in
+            // Beiträge laden und nur die mit einem gültigen Datum sortieren
+            self.posts = (snapshot?.documents.compactMap { document in
                 try? document.data(as: Post.self)
-            } ?? []
+            } ?? []).sorted {
+                // Optionales Unwrapping von uploadDate
+                guard let date1 = $0.uploadDate, let date2 = $1.uploadDate else {
+                    // Falls eines der Daten fehlt, behandle es als älteres Datum
+                    return $0.uploadDate != nil
+                }
+                return date1 > date2
+            }
         }
     }
     
@@ -90,7 +103,16 @@ struct NotesTabView: View {
             }
         }
     }
+    
+    // Funktion zum Formatieren des Datums
+    private func formattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter.string(from: date)
+    }
 }
+
 #Preview {
     NotesTabView()
 }

@@ -37,7 +37,7 @@ struct NewPostView: View {
     // Funktion zum Hinzufügen eines neuen Beitrags in Firebase
     private func addNewPost() {
         let db = Firestore.firestore()
-        let newPost = Post(title: title, content: content)
+        let newPost = Post(title: title, content: content, uploadDate: Date())
         
         do {
             let _ = try db.collection("Posts").addDocument(from: newPost)
