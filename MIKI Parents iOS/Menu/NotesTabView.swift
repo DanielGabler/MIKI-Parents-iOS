@@ -13,29 +13,38 @@ struct NotesTabView: View {
     @State private var posts: [Post] = [] // Liste der Beiträge
     @State private var postToDelete: Post? // Der Beitrag, der gelöscht werden soll
     @State private var showDeleteConfirmation = false // Zeigt den Bestätigungsdialog an
+    @State private var isLoading: Bool = false // Variable für den Ladezustand
     
     var body: some View {
         NavigationView {
             VStack {
-                List {
-                    ForEach(posts) { post in
-                        VStack(alignment: .leading) {
-                            Text(post.title)
-                                .font(.headline)
-                            Text(post.content)
-                                .font(.subheadline)
-                            if let uploadDate = post.uploadDate {
-                                Text("Erstellt: \(formattedDate(uploadDate))")
-                                    .font(.footnote)
-                                    .foregroundColor(.gray)
+                // Ladebalken anzeigen, während die Daten geladen werden
+                if isLoading {
+                    ProgressView("Beiträge werden geladen...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(1.5) // Vergrößert den Ladebalken
+                        .padding()
+                } else {
+                    List {
+                        ForEach(posts) { post in
+                            VStack(alignment: .leading) {
+                                Text(post.title)
+                                    .font(.headline)
+                                Text(post.content)
+                                    .font(.subheadline)
+                                if let uploadDate = post.uploadDate {
+                                    Text("Erstellt: \(formattedDate(uploadDate))")
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
+                                }
                             }
-                        }
-                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                            Button(role: .destructive) {
-                                postToDelete = post
-                                showDeleteConfirmation = true
-                            } label: {
-                                Label("Löschen", systemImage: "trash")
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                Button(role: .destructive) {
+                                    postToDelete = post
+                                    showDeleteConfirmation = true
+                                } label: {
+                                    Label("Löschen", systemImage: "trash")
+                                }
                             }
                         }
                     }
@@ -69,10 +78,12 @@ struct NotesTabView: View {
     
     // Funktion, um die Beiträge von Firebase zu laden
     private func fetchPosts() {
+        isLoading = true // Setzt den Ladezustand auf true, wenn die Anfrage gestartet wird
         let db = Firestore.firestore()
         db.collection("Posts").getDocuments { snapshot, error in
             if let error = error {
                 print("Error fetching posts: \(error)")
+                isLoading = false // Setzt den Ladezustand zurück
                 return
             }
             
@@ -87,6 +98,7 @@ struct NotesTabView: View {
                 }
                 return date1 > date2
             }
+            isLoading = false // Setzt den Ladezustand zurück
         }
     }
     

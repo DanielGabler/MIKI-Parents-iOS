@@ -19,8 +19,14 @@ struct KidsMusicTabView: View {
                         .foregroundColor(.red)
                         .padding()
                 }
-
-                if viewModel.tracks.isEmpty {
+                
+                // Ladebalken anzeigen, während die Daten geladen werden
+                if viewModel.isLoading {
+                    ProgressView("Tracks werden geladen...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(1.5) // Vergrößert den Ladebalken
+                        .padding()
+                } else if viewModel.tracks.isEmpty {
                     Text("No tracks available")
                         .foregroundColor(.gray)
                         .padding()
@@ -81,4 +87,8 @@ struct KidsMusicTabView: View {
             }
         }
     }
+}
+
+#Preview {
+    KidsMusicTabView()
 }

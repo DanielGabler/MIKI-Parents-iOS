@@ -56,3 +56,7 @@ struct SettingsTabView: View {
     }
     
 }
+
+#Preview {
+    SettingsTabView()
+}
