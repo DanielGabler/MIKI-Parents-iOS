@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C0FD4F52C90926800B1DBEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C0FD4F42C90926800B1DBEA /* GoogleService-Info.plist */; };
 		1C113EB22C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C113EB12C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift */; };
 		1C113EB62C874FBC00F09D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C113EB52C874FBC00F09D65 /* Assets.xcassets */; };
 		1C113EB92C874FBC00F09D65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C113EB82C874FBC00F09D65 /* Preview Assets.xcassets */; };
 		1C113EC32C874FBC00F09D65 /* MIKI_Parents_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C113EC22C874FBC00F09D65 /* MIKI_Parents_iOSTests.swift */; };
 		1C113ECD2C874FBC00F09D65 /* MIKI_Parents_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C113ECC2C874FBC00F09D65 /* MIKI_Parents_iOSUITests.swift */; };
 		1C113ECF2C874FBC00F09D65 /* MIKI_Parents_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C113ECE2C874FBC00F09D65 /* MIKI_Parents_iOSUITestsLaunchTests.swift */; };
+		1C910FD12CB50B4000E4DC66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C910FD02CB50B3100E4DC66 /* AppDelegate.swift */; };
+		1C910FD32CB5125500E4DC66 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C910FD22CB5125500E4DC66 /* GoogleService-Info.plist */; };
+		1C910FD62CB5617600E4DC66 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C910FD52CB5616000E4DC66 /* AudioPlayer.swift */; };
+		1C910FD82CB5621500E4DC66 /* kids_laugh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1C910FD72CB5621500E4DC66 /* kids_laugh.mp3 */; };
 		1CB2E4D22C99C87E003FDFC0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4CF2C99C87E003FDFC0 /* LoginView.swift */; };
 		1CB2E4D32C99C87E003FDFC0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4D02C99C87E003FDFC0 /* LoginViewModel.swift */; };
 		1CB2E4D72C99C890003FDFC0 /* KidsMusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4D42C99C890003FDFC0 /* KidsMusicItem.swift */; };
@@ -31,7 +34,7 @@
 		1CB2E4F42C99C8D4003FDFC0 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4E52C99C8D4003FDFC0 /* NotesViewModel.swift */; };
 		1CB2E4F52C99C8D4003FDFC0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4E62C99C8D4003FDFC0 /* Post.swift */; };
 		1CB2E4F62C99C8D4003FDFC0 /* SettingsTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4E82C99C8D4003FDFC0 /* SettingsTabViewModel.swift */; };
-		1CB2E4F82C99C933003FDFC0 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4F72C99C933003FDFC0 /* UserViewModel.swift */; };
+		1CB2E4F82C99C933003FDFC0 /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4F72C99C933003FDFC0 /* FirebaseAuthManager.swift */; };
 		1CE2F5A82C90898A000F818C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE2F5A72C90898A000F818C /* FirebaseAnalytics */; };
 		1CE2F5AA2C90898A000F818C /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE2F5A92C90898A000F818C /* FirebaseAnalyticsOnDeviceConversion */; };
 		1CE2F5AC2C90898A000F818C /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE2F5AB2C90898A000F818C /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -85,7 +88,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C0FD4F42C90926800B1DBEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C113EAE2C874FBB00F09D65 /* MIKI Parents iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MIKI Parents iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C113EB12C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIKI_Parents_iOSApp.swift; sourceTree = "<group>"; };
 		1C113EB52C874FBC00F09D65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,6 +97,11 @@
 		1C113EC82C874FBC00F09D65 /* MIKI Parents iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MIKI Parents iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C113ECC2C874FBC00F09D65 /* MIKI_Parents_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIKI_Parents_iOSUITests.swift; sourceTree = "<group>"; };
 		1C113ECE2C874FBC00F09D65 /* MIKI_Parents_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIKI_Parents_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1C910FD02CB50B3100E4DC66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1C910FD22CB5125500E4DC66 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1C910FD42CB52BAC00E4DC66 /* MIKI-Parents-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MIKI-Parents-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
+		1C910FD52CB5616000E4DC66 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		1C910FD72CB5621500E4DC66 /* kids_laugh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = kids_laugh.mp3; sourceTree = "<group>"; };
 		1CB2E4CF2C99C87E003FDFC0 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1CB2E4D02C99C87E003FDFC0 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1CB2E4D42C99C890003FDFC0 /* KidsMusicItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KidsMusicItem.swift; sourceTree = "<group>"; };
@@ -112,7 +119,7 @@
 		1CB2E4E52C99C8D4003FDFC0 /* NotesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
 		1CB2E4E62C99C8D4003FDFC0 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1CB2E4E82C99C8D4003FDFC0 /* SettingsTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabViewModel.swift; sourceTree = "<group>"; };
-		1CB2E4F72C99C933003FDFC0 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		1CB2E4F72C99C933003FDFC0 /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
 		1CE2F5DD2C908BF6000F818C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1CF52E612C9AB67B00EC59C2 /* UploadFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileView.swift; sourceTree = "<group>"; };
 		1CF52E632C9AB6AB00EC59C2 /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
@@ -196,9 +203,11 @@
 		1C113EB02C874FBB00F09D65 /* MIKI Parents iOS */ = {
 			isa = PBXGroup;
 			children = (
+				1C910FD42CB52BAC00E4DC66 /* MIKI-Parents-iOS-Info.plist */,
 				1C113EB12C874FBB00F09D65 /* MIKI_Parents_iOSApp.swift */,
 				1CE2F5DD2C908BF6000F818C /* HomeView.swift */,
-				1CB2E4F72C99C933003FDFC0 /* UserViewModel.swift */,
+				1CB2E4F72C99C933003FDFC0 /* FirebaseAuthManager.swift */,
+				1C910FD52CB5616000E4DC66 /* AudioPlayer.swift */,
 				1CB2E4D12C99C87E003FDFC0 /* Login */,
 				1CB2E4DB2C99C8D4003FDFC0 /* Register */,
 				1CB2E4E22C99C8D4003FDFC0 /* Menu */,
@@ -207,7 +216,8 @@
 				1CB2E4D62C99C890003FDFC0 /* Kids Music */,
 				1CB2E4E92C99C8D4003FDFC0 /* Settings */,
 				1C113EB52C874FBC00F09D65 /* Assets.xcassets */,
-				1C0FD4F42C90926800B1DBEA /* GoogleService-Info.plist */,
+				1C910FD22CB5125500E4DC66 /* GoogleService-Info.plist */,
+				1C910FD72CB5621500E4DC66 /* kids_laugh.mp3 */,
 				1C113EB72C874FBC00F09D65 /* Preview Content */,
 			);
 			path = "MIKI Parents iOS";
@@ -282,6 +292,7 @@
 		1CB2E4E72C99C8D4003FDFC0 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				1C910FD02CB50B3100E4DC66 /* AppDelegate.swift */,
 				1CB2E4E32C99C8D4003FDFC0 /* FirestoreItem.swift */,
 				1CB2E4E42C99C8D4003FDFC0 /* NewPostView.swift */,
 				1CB2E4E52C99C8D4003FDFC0 /* NotesViewModel.swift */,
@@ -447,8 +458,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C113EB92C874FBC00F09D65 /* Preview Assets.xcassets in Resources */,
+				1C910FD32CB5125500E4DC66 /* GoogleService-Info.plist in Resources */,
 				1C113EB62C874FBC00F09D65 /* Assets.xcassets in Resources */,
-				1C0FD4F52C90926800B1DBEA /* GoogleService-Info.plist in Resources */,
+				1C910FD82CB5621500E4DC66 /* kids_laugh.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,8 +501,9 @@
 				1CF52E6C2C9ABC6400EC59C2 /* FileDetailView.swift in Sources */,
 				1CF52E642C9AB6AB00EC59C2 /* FileItem.swift in Sources */,
 				1CB2E4F52C99C8D4003FDFC0 /* Post.swift in Sources */,
-				1CB2E4F82C99C933003FDFC0 /* UserViewModel.swift in Sources */,
+				1CB2E4F82C99C933003FDFC0 /* FirebaseAuthManager.swift in Sources */,
 				1CF52E662C9ABA8300EC59C2 /* DocumentPicker.swift in Sources */,
+				1C910FD12CB50B4000E4DC66 /* AppDelegate.swift in Sources */,
 				1CF52E742CA1AC5300EC59C2 /* PDFThumbnailView.swift in Sources */,
 				1CB2E4D72C99C890003FDFC0 /* KidsMusicItem.swift in Sources */,
 				1CF52E722CA19B1F00EC59C2 /* FullscreenView.swift in Sources */,
@@ -502,6 +515,7 @@
 				1CF52E622C9AB67B00EC59C2 /* UploadFileView.swift in Sources */,
 				1CF52E762CA1ACBD00EC59C2 /* FullscreenPDFView.swift in Sources */,
 				1CB2E4F32C99C8D4003FDFC0 /* NewPostView.swift in Sources */,
+				1C910FD62CB5617600E4DC66 /* AudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,13 +674,16 @@
 		1C113ED32C874FBC00F09D65 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MIKI Parents iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = TQGFJG3PS4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MIKI-Parents-iOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -688,13 +705,16 @@
 		1C113ED42C874FBC00F09D65 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MIKI Parents iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = TQGFJG3PS4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MIKI-Parents-iOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

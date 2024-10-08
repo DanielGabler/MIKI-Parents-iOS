@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseFirestore
 import FirebaseFirestoreCombineSwift
+import AVFoundation
 
 struct LoginView: View {
     
@@ -25,6 +26,7 @@ struct LoginView: View {
                 // Logo-Bild mit Animation
                 Image("logo") // Stelle sicher, dass der Name des Bilds "logo.png" korrekt ist
                     .resizable()
+                    .cornerRadius(24)
                     .scaledToFit()
                     .frame(width: 150, height: 150) // Größe des Logos
                     .offset(y: logoOffset) // Offset für die Animation
@@ -33,6 +35,8 @@ struct LoginView: View {
                         withAnimation(.easeOut(duration: 1.5)) {
                             logoOffset = 0 // Zielpunkt: oberhalb der Eingabefelder
                         }
+                        // Sound abspielen
+                        AudioPlayer.shared.playSound(soundFileName: "kids_laugh")
                     }
                     .padding(.bottom, 40) // Abstand zwischen Logo und den Eingabefeldern
                 
@@ -63,19 +67,17 @@ struct LoginView: View {
                 
             }
             .padding()
-            .navigationTitle("MIKI Parents iOS")
+            .navigationTitle("MIKI Parents")
         }
     }
     
     private func attemptSignIn() {
         Task {
             do {
-                try await userViewModel.signIn(email: email, password: password)
+                try await FirebaseAuthManager.shared.signIn(email: email, password: password)
             } catch {
                 print("Error")
             }
         }
     }
-    
-    @Environment(UserViewModel.self) private var userViewModel
 }

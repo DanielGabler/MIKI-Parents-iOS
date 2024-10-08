@@ -16,6 +16,7 @@ struct SettingsTabView: View {
             Spacer()
             Image("logo") // Stelle sicher, dass der Name des Bilds "logo.png" korrekt ist
                 .resizable()
+                .cornerRadius(24)
                 .scaledToFit()
                 .frame(width: 150, height: 150) // Größe des Logos
                 
@@ -36,7 +37,7 @@ struct SettingsTabView: View {
 
             // Logout Button
             Button(action: {
-                userViewModel.signOut()
+                FirebaseAuthManager.shared.signOut()
             }) {
                 Text("Logout")
                     .font(.headline)
@@ -53,5 +54,5 @@ struct SettingsTabView: View {
         }
         .navigationTitle("Einstellungen")
     }
-    @Environment(UserViewModel.self) private var userViewModel
+    
 }

@@ -12,71 +12,93 @@ import PDFKit
 struct HomeworkTabView: View {
     @State private var isShowingUploadSheet = false
     @State private var items: [FileItem] = [] // Liste der Dateien
+    @State private var isLoading = true // Statusvariable für das Laden
     
     var body: some View {
         NavigationView {
             VStack {
-                ScrollView {
-                    ForEach(items) { item in // Verwende nur items
-                        HStack {
-                            // Anzeige der Datei (Bild oder PDF Vorschau)
-                            let imageUrl = item.imageUrl
-                            if let url = URL(string: imageUrl) { // Korrektur hier
-                                if imageUrl.lowercased().hasSuffix(".pdf") {
-                                    // PDF Vorschau
-                                    NavigationLink(destination: FullscreenPDFView(pdfUrl: url, uploadDate: Timestamp())) {
-                                        PDFThumbnailView(url: url)
-                                            .frame(width: 80, height: 80)
-                                            .cornerRadius(16)
-                                    }
-                                } else {
-                                    // Bildvorschau
-                                    NavigationLink(destination: FullscreenView(imageUrl: url, uploadDate: Timestamp())) {
-                                        HStack {
-                                            AsyncImage(url: url) { image in
-                                                image
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
+                if isLoading {
+                    // Ladebalken während der Daten geladen werden
+                    ProgressView("Daten werden geladen...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(1.5) // Vergrößert den Ladebalken
+                        .padding()
+                } else {
+                    ScrollView {
+                        ForEach(items) { item in
+                            HStack {
+                                // Anzeige der Datei (Bild oder PDF Vorschau)
+                                let imageUrl = item.imageUrl
+                                if let url = URL(string: imageUrl) {
+                                    if imageUrl.lowercased().contains(".pdf") {
+                                        // PDF Vorschau
+                                        NavigationLink(destination: FullscreenPDFView(pdfUrl: url, uploadDate: Timestamp())) {
+                                            HStack {
+                                                PDFThumbnailView(url: url)
                                                     .frame(width: 80, height: 80)
                                                     .cornerRadius(16)
-                                            } placeholder: {
-                                                Color.gray
-                                                    .frame(width: 80, height: 80)
-                                                    .cornerRadius(16)
+                                                VStack(alignment: .leading) {
+                                                    Text(item.name) // Name der Datei
+                                                        .font(.headline)
+                                                        .fontWeight(.bold)
+                                                        .foregroundColor(Color.gray)
+                                                        .multilineTextAlignment(.leading)
+                                                    // Zeige das Upload-Datum an
+                                                    Text(dateFormatter.string(from: item.uploadDate?.dateValue() ?? Date()))
+                                                        .font(.subheadline)
+                                                        .foregroundColor(.gray)
+                                                }
                                             }
-                                            VStack(alignment: .leading) {
-                                                Text(item.name) // Name der Datei
-                                                    .font(.headline)
-                                                    .fontWeight(.bold)
-                                                    .foregroundColor(Color.gray)
-                                                    .multilineTextAlignment(.leading)
-                                                // Zeige das Upload-Datum an
-                                                Text(dateFormatter.string(from: item.uploadDate?.dateValue() ?? Date()))
-                                                    .font(.subheadline)
-                                                    .foregroundColor(.gray)
+                                        }
+                                    } else {
+                                        // Bildvorschau
+                                        NavigationLink(destination: FullscreenView(imageUrl: url, uploadDate: Timestamp())) {
+                                            HStack {
+                                                AsyncImage(url: url) { image in
+                                                    image
+                                                        .resizable()
+                                                        .aspectRatio(contentMode: .fit)
+                                                        .frame(width: 80, height: 80)
+                                                        .cornerRadius(16)
+                                                } placeholder: {
+                                                    Color.gray
+                                                        .frame(width: 80, height: 80)
+                                                        .cornerRadius(16)
+                                                }
+                                                VStack(alignment: .leading) {
+                                                    Text(item.name) // Name der Datei
+                                                        .font(.headline)
+                                                        .fontWeight(.bold)
+                                                        .foregroundColor(Color.gray)
+                                                        .multilineTextAlignment(.leading)
+                                                    // Zeige das Upload-Datum an
+                                                    Text(dateFormatter.string(from: item.uploadDate?.dateValue() ?? Date()))
+                                                        .font(.subheadline)
+                                                        .foregroundColor(.gray)
+                                                }
                                             }
                                         }
                                     }
+                                } else {
+                                    Image(systemName: "doc")
+                                        .frame(width: 80, height: 80)
+                                        .foregroundColor(.gray)
                                 }
-                            } else {
-                                Image(systemName: "doc")
-                                    .frame(width: 80, height: 80)
-                                    .foregroundColor(.gray)
-                            }
 
-                            Spacer()
+                                Spacer()
 
-                            // Herzchen-Schaltfläche
-                            Button(action: {
-                                toggleSeenStatus(for: item) // Korrektur hier
-                            }) {
-                                Image(systemName: item.isSeen ? "checkmark.circle.fill" : "checkmark.circle")
-                                    .foregroundColor(item.isSeen ? .blue : .gray)
+                                // Herzchen-Schaltfläche
+                                Button(action: {
+                                    toggleSeenStatus(for: item)
+                                }) {
+                                    Image(systemName: item.isSeen ? "checkmark.circle.fill" : "checkmark.circle")
+                                        .foregroundColor(item.isSeen ? .blue : .gray)
+                                }
                             }
                         }
                     }
+                    .padding()
                 }
-                .padding()
             }
             .navigationBarTitle("Aufgaben")
             .navigationBarItems(trailing: Button(action: {
@@ -94,10 +116,12 @@ struct HomeworkTabView: View {
     
     // Funktion, um Dateien von Firestore zu laden
     private func fetchItems() {
+        isLoading = true // Setzt den Ladezustand auf "true"
         let db = Firestore.firestore()
         db.collection("fotos").getDocuments { snapshot, error in
             if let error = error {
                 print("Error fetching files: \(error)")
+                isLoading = false
                 return
             }
 
@@ -111,6 +135,7 @@ struct HomeworkTabView: View {
                 let date2 = $1.uploadDate?.dateValue() ?? Date.distantPast
                 return date1 > date2
             }
+            isLoading = false // Sobald die Daten geladen sind, Ladezustand auf "false" setzen
         }
     }
     
@@ -136,6 +161,7 @@ struct HomeworkTabView: View {
         }
     }
 }
+
 #Preview {
     HomeworkTabView()
 }

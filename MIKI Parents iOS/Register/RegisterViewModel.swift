@@ -13,13 +13,15 @@ class RegisterViewModel: ObservableObject {
     @Published var password = ""
     @Published var registerSuccess = false
     @Published var errorMessage: String?
-
+    
     func register() {
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
-            if let error = error {
-                self?.errorMessage = error.localizedDescription
-            } else {
-                self?.registerSuccess = true  // Erfolgreiche Registrierung
+        Task{
+            do {
+                try await FirebaseAuthManager.shared.signUp(email: email, password: password)
+            } catch {
+                print("Error signing up: \(error.localizedDescription)")
+                
+                
             }
         }
     }

@@ -32,11 +32,7 @@ struct RegisterView: View {
                 Text(errorMessage)
                     .foregroundColor(.red)
             }
-
-            // Navigation zu HomeView bei erfolgreicher Registrierung
-            NavigationLink(destination: HomeView(), isActive: $viewModel.registerSuccess) {
-                EmptyView()
-            }
+            
         }
         .padding()
         .navigationTitle("Register")

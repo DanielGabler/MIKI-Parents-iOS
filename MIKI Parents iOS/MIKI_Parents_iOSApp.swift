@@ -7,9 +7,6 @@
 
 import SwiftUI
 import FirebaseCore
-
-
-import SwiftUI
 import FirebaseFirestore
 
 @main
@@ -17,21 +14,18 @@ struct MIKI_Parents_iOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if userViewModel.isUserSignedIn {
+            if FirebaseAuthManager.shared.isUserSignedIn {
                 HomeView()
             } else {
                 LoginView()
             }
         }
-        .environment(userViewModel)
     }
     
     init() {
         FirebaseConfiguration.shared.setLoggerLevel(.min)
         FirebaseApp.configure()
-        userViewModel = UserViewModel()
+        
     }
-    
-    private let userViewModel: UserViewModel
 
 }

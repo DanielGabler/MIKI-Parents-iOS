@@ -17,7 +17,7 @@ struct FullscreenPDFView: View {
         VStack {
             PDFKitView(url: pdfUrl)
                 .edgesIgnoringSafeArea(.all)
-        }
+        }.onAppear{print(pdfUrl)}
     }
 }
 

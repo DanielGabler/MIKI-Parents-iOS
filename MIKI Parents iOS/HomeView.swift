@@ -41,10 +41,10 @@ struct HomeView: View {
                     Image(systemName: "gear")
                     Text("Einstellungen")
                 }
-                .environment(userViewModel)
+                
         }
     }
-    @Environment(UserViewModel.self) private var userViewModel
+    
 }
 #Preview {
     HomeView()

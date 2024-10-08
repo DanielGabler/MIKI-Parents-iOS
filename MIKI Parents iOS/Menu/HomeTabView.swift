@@ -8,35 +8,52 @@
 import SwiftUI
 
 struct HomeTabView: View {
-    @State private var displayedText = "" // Der aktuell angezeigte Text
-    private let fullText = "Herzlich Willkommen bei\nMIKI Parents iOS" // Voller Begrüßungstext
-    @State private var charIndex = 0 // Aktueller Zeichenindex
-    @State private var timer: Timer? // Timer für die Animation
+    @State private var displayedText = ""
+    private let fullText = "Herzlich Willkommen bei\nMIKI Parents iOS"
+    @State private var charIndex = 0
+    @State private var timer: Timer?
+    
+    // State für das Logo
+    @State private var logoOpacity = 0.0 // Startet unsichtbar
     
     var body: some View {
         VStack {
-            Text(displayedText) // Zeigt den animierten Text an
-                .font(.title) // Schriftgröße
-                .multilineTextAlignment(.center) // Zentrierte Ausrichtung
+            // Begrüßungstext
+            Text(displayedText)
+                .font(.title)
+                .multilineTextAlignment(.center)
                 .padding()
                 .onAppear {
-                    startTypingAnimation()
+                    startTypingAnimation() // Startet die Tippen-Animation
                 }
+            
+            // Logo, das langsam eingeblendet wird
+            Image("logo")
+                .resizable()
+                .cornerRadius(24)
+                .scaledToFit()
+                .frame(width: 150, height: 150) // Größe des Logos
+                .opacity(logoOpacity) // Kontrolliere die Sichtbarkeit
+                .padding(.top, 40) // Abstand zum Text
         }
     }
     
-    // Funktion, um die Animation zu starten
     private func startTypingAnimation() {
-        // Timer erstellen, der alle 0.1 Sekunden ein weiteres Zeichen anzeigt
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
             if charIndex < fullText.count {
                 let index = fullText.index(fullText.startIndex, offsetBy: charIndex)
                 displayedText.append(fullText[index]) // Füge das nächste Zeichen hinzu
                 charIndex += 1
             } else {
-                // Stoppe den Timer, wenn der gesamte Text angezeigt wurde
                 timer?.invalidate()
                 timer = nil
+                
+                // Sobald der Text vollständig ist, Logo langsam einblenden
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    withAnimation(.easeIn(duration: 1.5)) {
+                        logoOpacity = 1.0 // Logo einblenden
+                    }
+                }
             }
         }
     }

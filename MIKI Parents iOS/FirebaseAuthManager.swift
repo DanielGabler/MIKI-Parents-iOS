@@ -8,9 +8,11 @@
 import Foundation
 import FirebaseAuth
 
-@Observable class UserViewModel {
+@Observable class FirebaseAuthManager {
     
     var user: User?
+    
+    static var shared = FirebaseAuthManager()
     
     var isUserSignedIn: Bool {
         user != nil
