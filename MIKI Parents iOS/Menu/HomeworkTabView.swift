@@ -87,12 +87,20 @@ struct HomeworkTabView: View {
 
                                 Spacer()
 
-                                // Herzchen-Schaltfläche
+                                // Erstes Häkchen (Herzchen-Schaltfläche)
                                 Button(action: {
                                     toggleSeenStatus(for: item)
                                 }) {
                                     Image(systemName: item.isSeen ? "checkmark.circle.fill" : "checkmark.circle")
                                         .foregroundColor(item.isSeen ? .blue : .gray)
+                                }
+
+                                // Zweites Häkchen (gesehen)
+                                Button(action: {
+                                    toggleViewedStatus(for: item)
+                                }) {
+                                    Image(systemName: item.isViewed ? "checkmark.circle.fill" : "checkmark.circle")
+                                        .foregroundColor(item.isViewed ? .blue : .gray)
                                 }
                             }
                         }
@@ -157,6 +165,28 @@ struct HomeworkTabView: View {
             // Aktualisiere den Status lokal
             if let index = items.firstIndex(where: { $0.id == itemId }) {
                 items[index].isSeen = newStatus
+            }
+        }
+    }
+
+    // Funktion, um den "gesehen" Status (zweites Häkchen) in Firestore zu toggeln
+    private func toggleViewedStatus(for item: FileItem) {
+        guard let itemId = item.id else { return }
+        
+        let db = Firestore.firestore()
+        let newStatus = !item.isViewed
+        
+        db.collection("fotos").document(itemId).updateData([
+            "isViewed": newStatus
+        ]) { error in
+            if let error = error {
+                print("Error updating viewed status: \(error)")
+                return
+            }
+            
+            // Aktualisiere den Status lokal
+            if let index = items.firstIndex(where: { $0.id == itemId }) {
+                items[index].isViewed = newStatus
             }
         }
     }

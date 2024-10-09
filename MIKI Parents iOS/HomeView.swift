@@ -41,7 +41,7 @@ struct HomeView: View {
                     Image(systemName: "gear")
                     Text("Einstellungen")
                 }
-                
+               
         }
     }
     

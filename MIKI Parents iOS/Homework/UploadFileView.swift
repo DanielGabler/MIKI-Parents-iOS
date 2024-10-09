@@ -134,7 +134,7 @@ struct UploadFileView: View {
     // Funktion zum Speichern der Metadaten in Firestore
     private func saveFileMetadata(fileUrl: String, type: String) {
         let db = Firestore.firestore()
-        let newFile = FileItem(name: fileName, imageUrl: fileUrl, type: type, isSeen: false, uploadDate: Timestamp()) // Dateityp setzen
+        let newFile = FileItem(name: fileName, imageUrl: fileUrl, type: type, isSeen: false, isViewed: false, uploadDate: Timestamp()) // Dateityp setzen
 
         do {
             let _ = try db.collection("fotos").addDocument(from: newFile)

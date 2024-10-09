@@ -14,6 +14,7 @@ struct FileItem: Identifiable, Encodable, Decodable {
     var name: String
     var imageUrl: String // Dies wird sowohl für Bilder als auch für Dokumente verwendet
     var type: String // "image" oder "document"
-    var isSeen: Bool
+    var isSeen: Bool    // Erstes Häkchen für "gesehen" Status
+    var isViewed: Bool // Zweites Häkchen für "gesehen" Status
     var uploadDate: Timestamp? // Feld für das Upload-Datum
 }
