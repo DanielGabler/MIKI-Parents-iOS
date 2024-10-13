@@ -10,7 +10,9 @@ import FirebaseFirestore
 
 struct NotesTabView: View {
     @State private var isShowingNewPostSheet = false
+    @State private var isShowingCalendarSheet = false // Sheet für Ferienkalender
     @State private var posts: [Post] = [] // Liste der Beiträge
+    @State private var holidays: [Holiday] = [] // Liste der Feiertage aus der API
     @State private var postToDelete: Post? // Der Beitrag, der gelöscht werden soll
     @State private var showDeleteConfirmation = false // Zeigt den Bestätigungsdialog an
     @State private var isLoading: Bool = false // Variable für den Ladezustand
@@ -51,15 +53,27 @@ struct NotesTabView: View {
                 }
             }
             .navigationBarTitle("Info's")
-            .navigationBarItems(trailing: Button(action: {
-                isShowingNewPostSheet.toggle() // Öffnet das Sheet
-            }) {
-                Image(systemName: "plus")
-                    .font(.title)
-            })
+            .navigationBarItems(
+                leading: Button(action: {
+                    isShowingCalendarSheet.toggle() // Öffnet das Sheet für den Ferienkalender
+                    fetchHolidays() // Lade die Feiertage von der API
+                }) {
+                    Image(systemName: "calendar") // Kalendersymbol
+                        .font(.title)
+                },
+                trailing: Button(action: {
+                    isShowingNewPostSheet.toggle() // Öffnet das Sheet für neue Posts
+                }) {
+                    Image(systemName: "plus")
+                        .font(.title)
+                }
+            )
             .onAppear(perform: fetchPosts) // Beiträge laden, wenn die View erscheint
             .sheet(isPresented: $isShowingNewPostSheet) {
                 NewPostView(isPresented: $isShowingNewPostSheet, onPostAdded: fetchPosts)
+            }
+            .sheet(isPresented: $isShowingCalendarSheet) {
+                HolidayListView(holidays: $holidays)
             }
             .alert(isPresented: $showDeleteConfirmation) {
                 Alert(
@@ -115,6 +129,38 @@ struct NotesTabView: View {
             }
         }
     }
+
+    // Funktion, um die Feiertage von der Ferienkalender API zu laden
+    private func fetchHolidays() {
+        guard let url = URL(string: "https://ferien-api.de/api/v1/holidays/NW/2024") else {
+            print("Ungültige URL")
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Fehler beim Laden der Feiertage: \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                print("Keine Daten erhalten")
+                return
+            }
+            
+            do {
+                // Decode die API-Antwort in das Holiday-Model
+                let decodedHolidays = try JSONDecoder().decode([Holiday].self, from: data)
+                DispatchQueue.main.async {
+                    self.holidays = decodedHolidays
+                }
+            } catch {
+                print("Fehler beim Decodieren der Feiertage: \(error)")
+            }
+        }
+        
+        task.resume()
+    }
     
     // Funktion zum Formatieren des Datums
     private func formattedDate(_ date: Date) -> String {
@@ -122,6 +168,36 @@ struct NotesTabView: View {
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter.string(from: date)
+    }
+}
+
+// Model für die API-Daten
+struct Holiday: Identifiable, Codable {
+    var id: String { uuid } // Um Holiday Identifiable zu machen
+    let uuid = UUID().uuidString
+    let name: String
+    let start: String
+    let end: String
+    let stateCode: String
+}
+
+// View zum Anzeigen der Feiertage in einer Liste
+struct HolidayListView: View {
+    @Binding var holidays: [Holiday]
+    
+    var body: some View {
+        NavigationView {
+            List(holidays) { holiday in
+                VStack(alignment: .leading) {
+                    Text(holiday.name)
+                        .font(.headline)
+                    Text("Start: \(holiday.start)")
+                    Text("Ende: \(holiday.end)")
+                    Text("Bundesland: \(holiday.stateCode)")
+                }
+            }
+            .navigationBarTitle("Ferienkalender", displayMode: .inline)
+        }
     }
 }
 
