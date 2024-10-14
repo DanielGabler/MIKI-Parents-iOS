@@ -15,12 +15,14 @@ struct NotesTabView: View {
     @State private var holidays: [Holiday] = [] // Liste der Feiertage aus der API
     @State private var postToDelete: Post? // Der Beitrag, der gelöscht werden soll
     @State private var showDeleteConfirmation = false // Zeigt den Bestätigungsdialog an
-    @State private var isLoading: Bool = false // Variable für den Ladezustand
-    
+    @State private var isLoading: Bool = false // Variable für den Ladezustand der Posts
+    @State private var isLoadingHolidays: Bool = false // Variable für den Ladezustand der Feiertage
+    @State private var selectedState: String = "Alle" // Ausgewähltes Bundesland
+
     var body: some View {
         NavigationView {
             VStack {
-                // Ladebalken anzeigen, während die Daten geladen werden
+                // Ladebalken anzeigen, während die Beiträge geladen werden
                 if isLoading {
                     ProgressView("Beiträge werden geladen...")
                         .progressViewStyle(CircularProgressViewStyle())
@@ -52,19 +54,19 @@ struct NotesTabView: View {
                     }
                 }
             }
-            .navigationBarTitle("Info's")
+            .navigationBarTitle("Info's") // Titel Beschreibung
             .navigationBarItems(
                 leading: Button(action: {
                     isShowingCalendarSheet.toggle() // Öffnet das Sheet für den Ferienkalender
                     fetchHolidays() // Lade die Feiertage von der API
                 }) {
-                    Image(systemName: "calendar") // Kalendersymbol
+                    Image(systemName: "calendar.and.person") // Kalendersymbol
                         .font(.title)
                 },
                 trailing: Button(action: {
                     isShowingNewPostSheet.toggle() // Öffnet das Sheet für neue Posts
                 }) {
-                    Image(systemName: "plus")
+                    Image(systemName: "plus") // Plus Symbol für neuen Beitrag
                         .font(.title)
                 }
             )
@@ -73,7 +75,7 @@ struct NotesTabView: View {
                 NewPostView(isPresented: $isShowingNewPostSheet, onPostAdded: fetchPosts)
             }
             .sheet(isPresented: $isShowingCalendarSheet) {
-                HolidayListView(holidays: $holidays)
+                HolidayListView(holidays: $holidays, isLoadingHolidays: $isLoadingHolidays, selectedState: $selectedState)
             }
             .alert(isPresented: $showDeleteConfirmation) {
                 Alert(
@@ -130,9 +132,10 @@ struct NotesTabView: View {
         }
     }
 
-    // Funktion, um die Feiertage von der Ferienkalender API zu laden
+    // Funktion, um die Feiertage von der Ferienkalender API zu laden und nach Jahr zu sortieren
     private func fetchHolidays() {
-        guard let url = URL(string: "https://ferien-api.de/api/v1/holidays/NW/2024") else {
+        isLoadingHolidays = true // Ladezustand auf true setzen
+        guard let url = URL(string: "https://ferien-api.de/api/v1/holidays") else {
             print("Ungültige URL")
             return
         }
@@ -140,11 +143,13 @@ struct NotesTabView: View {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print("Fehler beim Laden der Feiertage: \(error)")
+                isLoadingHolidays = false // Ladezustand auf false setzen
                 return
             }
             
             guard let data = data else {
                 print("Keine Daten erhalten")
+                isLoadingHolidays = false // Ladezustand auf false setzen
                 return
             }
             
@@ -152,10 +157,20 @@ struct NotesTabView: View {
                 // Decode die API-Antwort in das Holiday-Model
                 let decodedHolidays = try JSONDecoder().decode([Holiday].self, from: data)
                 DispatchQueue.main.async {
-                    self.holidays = decodedHolidays
+                    // Feiertage nach Startdatum sortieren (neueste oben)
+                    self.holidays = decodedHolidays.sorted {
+                        let dateFormatter = ISO8601DateFormatter()
+                        guard let date1 = dateFormatter.date(from: $0.start),
+                              let date2 = dateFormatter.date(from: $1.start) else {
+                            return false
+                        }
+                        return date1 > date2
+                    }
+                    isLoadingHolidays = false // Ladezustand auf false setzen
                 }
             } catch {
                 print("Fehler beim Decodieren der Feiertage: \(error)")
+                isLoadingHolidays = false // Ladezustand auf false setzen
             }
         }
         
@@ -181,22 +196,53 @@ struct Holiday: Identifiable, Codable {
     let stateCode: String
 }
 
-// View zum Anzeigen der Feiertage in einer Liste
+// View zum Anzeigen der Feiertage in einer Liste oder eines Ladebalkens
 struct HolidayListView: View {
     @Binding var holidays: [Holiday]
+    @Binding var isLoadingHolidays: Bool
+    @Binding var selectedState: String
+    
+    // Liste der Bundesländer (StateCodes)
+    let states = ["Alle", "BE", "BY", "BW", "HE", "HH", "MV", "NI", "NW", "RP", "SH", "SL", "SN", "ST", "TH", "BB"]
+
+    var filteredHolidays: [Holiday] {
+        if selectedState == "Alle" {
+            return holidays
+        } else {
+            return holidays.filter { $0.stateCode == selectedState }
+        }
+    }
     
     var body: some View {
         NavigationView {
-            List(holidays) { holiday in
-                VStack(alignment: .leading) {
-                    Text(holiday.name)
-                        .font(.headline)
-                    Text("Start: \(holiday.start)")
-                    Text("Ende: \(holiday.end)")
-                    Text("Bundesland: \(holiday.stateCode)")
+            VStack {
+                // Picker für die Auswahl des Bundeslands
+                Picker("Bundesland auswählen", selection: $selectedState) {
+                    ForEach(states, id: \.self) { state in
+                        Text(state).tag(state)
+                    }
+                }
+                .pickerStyle(MenuPickerStyle()) // Optional: Ändert das Design des Pickers
+                .padding()
+
+                if isLoadingHolidays {
+                    ProgressView("Ferienkalender wird geladen...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(1.5) // Vergrößert den Ladebalken
+                        .padding()
+                } else {
+                    List(filteredHolidays) { holiday in
+                        VStack(alignment: .leading) {
+                            Text(holiday.name)
+                                .font(.headline)
+                            Text("Start: \(holiday.start)")
+                            Text("Ende: \(holiday.end)")
+                            Text("Bundesland: \(holiday.stateCode)")
+                        }
+                    }
+                    .navigationBarTitle("Ferienkalender", displayMode: .inline)
                 }
             }
-            .navigationBarTitle("Ferienkalender", displayMode: .inline)
         }
     }
 }
