@@ -18,6 +18,7 @@ struct NotesTabView: View {
     @State private var isLoading: Bool = false // Variable für den Ladezustand der Posts
     @State private var isLoadingHolidays: Bool = false // Variable für den Ladezustand der Feiertage
     @State private var selectedState: String = "Alle" // Ausgewähltes Bundesland
+    @State private var selectedYear: String = "Alle" // Ausgewähltes Jahr
 
     var body: some View {
         NavigationView {
@@ -75,7 +76,7 @@ struct NotesTabView: View {
                 NewPostView(isPresented: $isShowingNewPostSheet, onPostAdded: fetchPosts)
             }
             .sheet(isPresented: $isShowingCalendarSheet) {
-                HolidayListView(holidays: $holidays, isLoadingHolidays: $isLoadingHolidays, selectedState: $selectedState)
+                HolidayListView(holidays: $holidays, isLoadingHolidays: $isLoadingHolidays, selectedState: $selectedState, selectedYear: $selectedYear)
             }
             .alert(isPresented: $showDeleteConfirmation) {
                 Alert(
@@ -201,15 +202,29 @@ struct HolidayListView: View {
     @Binding var holidays: [Holiday]
     @Binding var isLoadingHolidays: Bool
     @Binding var selectedState: String
+    @Binding var selectedYear: String
     
     // Liste der Bundesländer (StateCodes)
     let states = ["Alle", "BE", "BY", "BW", "HE", "HH", "MV", "NI", "NW", "RP", "SH", "SL", "SN", "ST", "TH", "BB"]
+    
+    // Liste der verfügbaren Jahre
+    var years: [String] {
+        let calendar = Calendar.current
+        let currentYear = calendar.component(.year, from: Date())
+        return ["Alle"] + (2020...currentYear + 1).map { String($0) }
+    }
 
+    // Gefilterte Ferien nach Bundesland und Jahr
     var filteredHolidays: [Holiday] {
-        if selectedState == "Alle" {
-            return holidays
+        let filteredByState = selectedState == "Alle" ? holidays : holidays.filter { $0.stateCode == selectedState }
+        
+        if selectedYear == "Alle" {
+            return filteredByState
         } else {
-            return holidays.filter { $0.stateCode == selectedState }
+            return filteredByState.filter {
+                let startYear = String($0.start.prefix(4)) // Jahr aus dem Startdatum extrahieren
+                return startYear == selectedYear
+            }
         }
     }
     
@@ -222,9 +237,16 @@ struct HolidayListView: View {
                         Text(state).tag(state)
                     }
                 }
-                .pickerStyle(MenuPickerStyle()) // Optional: Ändert das Design des Pickers
-                .padding()
+                .pickerStyle(MenuPickerStyle()) // Auswahl über ein Menü
 
+                // Picker für die Auswahl des Jahres
+                Picker("Jahr auswählen", selection: $selectedYear) {
+                    ForEach(years, id: \.self) { year in
+                        Text(year).tag(year)
+                    }
+                }
+                .pickerStyle(MenuPickerStyle()) // Auswahl über ein Menü
+                
                 if isLoadingHolidays {
                     ProgressView("Ferienkalender wird geladen...")
                         .progressViewStyle(CircularProgressViewStyle())

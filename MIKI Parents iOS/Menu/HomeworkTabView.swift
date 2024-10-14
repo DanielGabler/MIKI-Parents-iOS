@@ -91,7 +91,7 @@ struct HomeworkTabView: View {
                                 Button(action: {
                                     toggleSeenStatus(for: item)
                                 }) {
-                                    Image(systemName: item.isSeen ? "checkmark.circle.fill" : "checkmark.circle")
+                                    Image(systemName: item.isSeen ? "checkmark.circle.fill" : "figure.stand")
                                         .foregroundColor(item.isSeen ? .blue : .gray)
                                 }
 
@@ -99,7 +99,7 @@ struct HomeworkTabView: View {
                                 Button(action: {
                                     toggleViewedStatus(for: item)
                                 }) {
-                                    Image(systemName: item.isViewed ? "checkmark.circle.fill" : "checkmark.circle")
+                                    Image(systemName: item.isViewed ? "checkmark.circle.fill" : "figure.stand.dress")
                                         .foregroundColor(item.isViewed ? .blue : .gray)
                                 }
                             }
