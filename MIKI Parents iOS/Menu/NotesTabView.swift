@@ -55,13 +55,13 @@ struct NotesTabView: View {
                     }
                 }
             }
-            .navigationBarTitle("Info's") // Titel Beschreibung
+            .navigationBarTitle("Notiz") // Titel Beschreibung
             .navigationBarItems(
                 leading: Button(action: {
                     isShowingCalendarSheet.toggle() // Öffnet das Sheet für den Ferienkalender
                     fetchHolidays() // Lade die Feiertage von der API
                 }) {
-                    Image(systemName: "calendar.and.person") // Kalendersymbol
+                    Image(systemName: "calendar.badge.exclamationmark") // Kalendersymbol
                         .font(.title)
                 },
                 trailing: Button(action: {

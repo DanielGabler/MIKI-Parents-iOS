@@ -21,13 +21,13 @@ struct HomeView: View {
             NotesTabView()
                 .tabItem {
                     Image(systemName: "list.bullet.clipboard.fill")
-                    Text("Info's")
+                    Text("Notiz")
                 }
 
             HomeworkTabView()
                 .tabItem {
                     Image(systemName: "doc.fill")
-                    Text("Aufgaben")
+                    Text("Aufgabe")
                 }
 
             KidsMusicTabView()

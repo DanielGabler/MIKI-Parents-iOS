@@ -87,15 +87,15 @@ struct HomeworkTabView: View {
 
                                 Spacer()
 
-                                // Erstes Häkchen (Herzchen-Schaltfläche)
+                                // Erstes Häkchen (Papa-Schaltfläche - Checkmark)
                                 Button(action: {
                                     toggleSeenStatus(for: item)
                                 }) {
                                     Image(systemName: item.isSeen ? "checkmark.circle.fill" : "figure.stand")
                                         .foregroundColor(item.isSeen ? .blue : .gray)
                                 }
-
-                                // Zweites Häkchen (gesehen)
+                                
+                                // Zweites Häkchen (Mama-Schaltfläche - Checkmark)
                                 Button(action: {
                                     toggleViewedStatus(for: item)
                                 }) {
@@ -108,7 +108,7 @@ struct HomeworkTabView: View {
                     .padding()
                 }
             }
-            .navigationBarTitle("Aufgaben")
+            .navigationBarTitle("Aufgabe")
             .navigationBarItems(trailing: Button(action: {
                 isShowingUploadSheet.toggle() // Öffnet das Upload-Sheet
             }) {
