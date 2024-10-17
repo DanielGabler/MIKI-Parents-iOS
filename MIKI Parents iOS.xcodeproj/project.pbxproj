@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,11 @@
 		1CB2E4F52C99C8D4003FDFC0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4E62C99C8D4003FDFC0 /* Post.swift */; };
 		1CB2E4F62C99C8D4003FDFC0 /* SettingsTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4E82C99C8D4003FDFC0 /* SettingsTabViewModel.swift */; };
 		1CB2E4F82C99C933003FDFC0 /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB2E4F72C99C933003FDFC0 /* FirebaseAuthManager.swift */; };
+		1CD0889A2CC12E7E000B404A /* FamilyJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD088962CC12E7E000B404A /* FamilyJoinView.swift */; };
+		1CD0889B2CC12E7E000B404A /* FamilyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD088972CC12E7E000B404A /* FamilyManager.swift */; };
+		1CD0889C2CC12E7E000B404A /* QRCodeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD088982CC12E7E000B404A /* QRCodeGeneratorView.swift */; };
+		1CD0889D2CC12E7E000B404A /* QRCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD088992CC12E7E000B404A /* QRCodeScannerView.swift */; };
+		1CD088A42CC139D4000B404A /* FamilyManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD088A32CC139D4000B404A /* FamilyManagerView.swift */; };
 		1CE2F5A82C90898A000F818C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE2F5A72C90898A000F818C /* FirebaseAnalytics */; };
 		1CE2F5AA2C90898A000F818C /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE2F5A92C90898A000F818C /* FirebaseAnalyticsOnDeviceConversion */; };
 		1CE2F5AC2C90898A000F818C /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 1CE2F5AB2C90898A000F818C /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -120,6 +125,11 @@
 		1CB2E4E62C99C8D4003FDFC0 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1CB2E4E82C99C8D4003FDFC0 /* SettingsTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabViewModel.swift; sourceTree = "<group>"; };
 		1CB2E4F72C99C933003FDFC0 /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
+		1CD088962CC12E7E000B404A /* FamilyJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyJoinView.swift; sourceTree = "<group>"; };
+		1CD088972CC12E7E000B404A /* FamilyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManager.swift; sourceTree = "<group>"; };
+		1CD088982CC12E7E000B404A /* QRCodeGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorView.swift; sourceTree = "<group>"; };
+		1CD088992CC12E7E000B404A /* QRCodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerView.swift; sourceTree = "<group>"; };
+		1CD088A32CC139D4000B404A /* FamilyManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManagerView.swift; sourceTree = "<group>"; };
 		1CE2F5DD2C908BF6000F818C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1CF52E612C9AB67B00EC59C2 /* UploadFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileView.swift; sourceTree = "<group>"; };
 		1CF52E632C9AB6AB00EC59C2 /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
@@ -131,10 +141,6 @@
 		1CF52E732CA1AC5300EC59C2 /* PDFThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFThumbnailView.swift; sourceTree = "<group>"; };
 		1CF52E752CA1ACBD00EC59C2 /* FullscreenPDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenPDFView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		1CF80DD62CC127FD00C136E7 /* FamilyQRCode */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FamilyQRCode; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1C113EAB2C874FBB00F09D65 /* Frameworks */ = {
@@ -219,7 +225,7 @@
 				1CF52E602C9AB60E00EC59C2 /* Homework */,
 				1CB2E4D62C99C890003FDFC0 /* Kids Music */,
 				1CB2E4E92C99C8D4003FDFC0 /* Settings */,
-				1CF80DD62CC127FD00C136E7 /* FamilyQRCode */,
+				1CD088A52CC14A94000B404A /* QRCode */,
 				1C113EB52C874FBC00F09D65 /* Assets.xcassets */,
 				1C910FD22CB5125500E4DC66 /* GoogleService-Info.plist */,
 				1C910FD72CB5621500E4DC66 /* kids_laugh.mp3 */,
@@ -314,6 +320,18 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		1CD088A52CC14A94000B404A /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				1CD088962CC12E7E000B404A /* FamilyJoinView.swift */,
+				1CD088972CC12E7E000B404A /* FamilyManager.swift */,
+				1CD088A32CC139D4000B404A /* FamilyManagerView.swift */,
+				1CD088982CC12E7E000B404A /* QRCodeGeneratorView.swift */,
+				1CD088992CC12E7E000B404A /* QRCodeScannerView.swift */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
 		1CF52E602C9AB60E00EC59C2 /* Homework */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,9 +362,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				1CF80DD62CC127FD00C136E7 /* FamilyQRCode */,
 			);
 			name = "MIKI Parents iOS";
 			packageProductDependencies = (
@@ -509,8 +524,13 @@
 				1CF52E6C2C9ABC6400EC59C2 /* FileDetailView.swift in Sources */,
 				1CF52E642C9AB6AB00EC59C2 /* FileItem.swift in Sources */,
 				1CB2E4F52C99C8D4003FDFC0 /* Post.swift in Sources */,
+				1CD0889A2CC12E7E000B404A /* FamilyJoinView.swift in Sources */,
+				1CD0889B2CC12E7E000B404A /* FamilyManager.swift in Sources */,
+				1CD0889C2CC12E7E000B404A /* QRCodeGeneratorView.swift in Sources */,
+				1CD0889D2CC12E7E000B404A /* QRCodeScannerView.swift in Sources */,
 				1CB2E4F82C99C933003FDFC0 /* FirebaseAuthManager.swift in Sources */,
 				1CF52E662C9ABA8300EC59C2 /* DocumentPicker.swift in Sources */,
+				1CD088A42CC139D4000B404A /* FamilyManagerView.swift in Sources */,
 				1C910FD12CB50B4000E4DC66 /* AppDelegate.swift in Sources */,
 				1CF52E742CA1AC5300EC59C2 /* PDFThumbnailView.swift in Sources */,
 				1CB2E4D72C99C890003FDFC0 /* KidsMusicItem.swift in Sources */,
