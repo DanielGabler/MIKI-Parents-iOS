@@ -17,8 +17,6 @@ struct FamilyManagerView: View {
 
     var body: some View {
         VStack {
-            
-            
             // QR-Code Scanner Button
             Button("QR Code scannen") {
                 isShowingScanner = true // Scanner anzeigen
@@ -49,8 +47,18 @@ struct FamilyManagerView: View {
             if let qrCodeImage = qrCodeImage {
                 Image(uiImage: qrCodeImage)
                     .resizable()
+                    .interpolation(.none) // Verhindert das Weichzeichnen beim Skalieren
                     .frame(width: 200, height: 200)
                     .padding()
+                
+                // Button zum Teilen des QR-Codes
+                Button("QR Code teilen") {
+                    shareQRCode(qrCodeImage)
+                }
+                .padding()
+                .background(Color.orange)
+                .foregroundColor(.white)
+                .cornerRadius(10)
             }
         }
         .navigationTitle("Family Manager")
@@ -58,17 +66,32 @@ struct FamilyManagerView: View {
 
     // Funktion zum Generieren eines QR-Codes aus einem String
     func generateQRCode(from string: String) -> UIImage? {
-        let context = CIContext()
+        let data = Data(string.utf8)
         let filter = CIFilter.qrCodeGenerator()
+        filter.setValue(data, forKey: "inputMessage")
+        
+        let transform = CGAffineTransform(scaleX: 10, y: 10) // QR-Code um das 10-fache vergrößern
 
-        filter.setValue(Data(string.utf8), forKey: "inputMessage")
-
-        if let outputImage = filter.outputImage,
-           let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
-            return UIImage(cgImage: cgImage)
+        if let outputImage = filter.outputImage?.transformed(by: transform) {
+            let context = CIContext()
+            if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
+                return UIImage(cgImage: cgImage)
+            }
         }
-
         return nil
+    }
+
+    // Funktion zum Teilen des QR-Codes
+    func shareQRCode(_ qrCode: UIImage?) {
+        guard let qrCode = qrCode else { return }
+        let activityVC = UIActivityViewController(activityItems: [qrCode], applicationActivities: nil)
+        
+        // Auf dem Hauptthread ausführen
+        DispatchQueue.main.async {
+            if let topController = UIApplication.shared.windows.first?.rootViewController {
+                topController.present(activityVC, animated: true, completion: nil)
+            }
+        }
     }
 }
 
