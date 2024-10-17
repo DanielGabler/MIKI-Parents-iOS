@@ -26,24 +26,31 @@ struct HomeTabView: View {
     @State private var logoOpacity = 0.0 // Startet unsichtbar
     
     var body: some View {
-        VStack {
-            // Logo, das langsam eingeblendet wird
-            Image("logo")
-                .resizable()
-                .cornerRadius(24) // Abgerundete Ecken
-                .scaledToFit()
-                .frame(width: 150, height: 150) // Größe des Logos
-                .opacity(logoOpacity) // Kontrolliere die Sichtbarkeit
-                .padding(.bottom, 40) // Abstand zum Text
+        NavigationView { // Fügt die NavigationView hinzu
+            VStack {
+                // Logo oben auf dem Bildschirm
+                Image("logo")
+                    .resizable()
+                    .cornerRadius(24) // Abgerundete Ecken
+                    .scaledToFit()
+                    .frame(width: 150, height: 150) // Größe des Logos
+                    .opacity(logoOpacity) // Kontrolliere die Sichtbarkeit
+                    .padding(.top, 40) // Abstand vom oberen Rand
 
-            // Begrüßungstext
-            Text(displayedText)
-                .font(.title) // Style der Schrift
-                .multilineTextAlignment(.center) // Mittig
-                .padding()
-                .onAppear {
-                    startTypingAnimation() // Startet die Tippen-Animation
-                }
+               
+
+                // Begrüßungstext unterhalb des Logos
+                Text(displayedText)
+                    .font(.title) // Style der Schrift
+                    .multilineTextAlignment(.center) // Mittig
+                    .padding() // Automatischer Abstand
+                    .onAppear {
+                        startTypingAnimation() // Startet die Tippen-Animation
+                    }
+                
+                Spacer() // Platzhalter für den Text, der ihn in der Mitte hält
+            }
+            .navigationTitle("Home") // Setzt den Navigation Bar Title
         }
     }
     

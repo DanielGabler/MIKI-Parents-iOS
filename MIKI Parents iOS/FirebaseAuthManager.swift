@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseStorage
 
 @Observable class FirebaseAuthManager {
     

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -132,6 +132,10 @@
 		1CF52E752CA1ACBD00EC59C2 /* FullscreenPDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenPDFView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1CF80DD62CC127FD00C136E7 /* FamilyQRCode */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FamilyQRCode; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		1C113EAB2C874FBB00F09D65 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -215,6 +219,7 @@
 				1CF52E602C9AB60E00EC59C2 /* Homework */,
 				1CB2E4D62C99C890003FDFC0 /* Kids Music */,
 				1CB2E4E92C99C8D4003FDFC0 /* Settings */,
+				1CF80DD62CC127FD00C136E7 /* FamilyQRCode */,
 				1C113EB52C874FBC00F09D65 /* Assets.xcassets */,
 				1C910FD22CB5125500E4DC66 /* GoogleService-Info.plist */,
 				1C910FD72CB5621500E4DC66 /* kids_laugh.mp3 */,
@@ -339,6 +344,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1CF80DD62CC127FD00C136E7 /* FamilyQRCode */,
 			);
 			name = "MIKI Parents iOS";
 			packageProductDependencies = (

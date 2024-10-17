@@ -15,51 +15,65 @@ struct SettingsTabView: View {
     @State private var displayName: String = "Benutzer" // Standardname für den Benutzer
 
     var body: some View {
-        VStack {
-            Spacer()
+        NavigationView {
+            VStack {
+                Spacer()
 
-            // Logo
-            Image("logo") // Stelle sicher, dass der Name des Bilds "logo.png" korrekt ist
-                .resizable()
-                .cornerRadius(24)
-                .scaledToFit()
-                .frame(width: 150, height: 150) // Größe des Logos
-                .padding(.bottom, 40) // Abstand zwischen Logo und den Eingabefeldern
+                // Logo
+                Image("logo") // Stelle sicher, dass der Name des Bilds "logo.png" korrekt ist
+                    .resizable()
+                    .cornerRadius(24)
+                    .scaledToFit()
+                    .frame(width: 150, height: 150) // Größe des Logos
+                    .padding(.bottom, 40) // Abstand zwischen Logo und den Eingabefeldern
 
-            // Begrüßungstext mit dem Benutzernamen oder der E-Mail
-            Text("Angemeldet als \(displayName)")
-                .font(.title2)
-                .padding(.bottom, 20) // Abstand zwischen dem Namen und dem Logout-Button
-            
-            // Fehlermeldung, falls Logout fehlschlägt
-            if let errorMessage = viewModel.errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-                    .padding()
+                // Begrüßungstext mit dem Benutzernamen oder der E-Mail
+                Text("Angemeldet als \(displayName)")
+                    .font(.title2)
+                    .padding(.bottom, 20) // Abstand zwischen dem Namen und dem Logout-Button
+                
+                // Fehlermeldung, falls Logout fehlschlägt
+                if let errorMessage = viewModel.errorMessage {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                        .padding()
+                }
+
+                // Family Manager Button
+                NavigationLink(destination: FamilyManagerView()) {
+                    Text("Family Manager")
+                        .font(.headline)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .padding()
+                }
+                
+                // Logout Button
+                Button(action: {
+                    FirebaseAuthManager.shared.signOut()
+                }) {
+                    Text("Logout")
+                        .font(.headline)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.red)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .padding()
+                }
+
+                Spacer()
+
             }
-
-            // Logout Button
-            Button(action: {
-                FirebaseAuthManager.shared.signOut()
-            }) {
-                Text("Logout")
-                    .font(.headline)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.red)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .padding()
+            .onAppear {
+                // Beim Laden der View Benutzerinformationen abrufen
+                fetchUserDetails()
             }
-
-            Spacer()
-
+            .navigationTitle("Einstellungen")
         }
-        .onAppear {
-            // Beim Laden der View Benutzerinformationen abrufen
-            fetchUserDetails()
-        }
-        .navigationTitle("Einstellungen")
     }
     
     private func fetchUserDetails() {
