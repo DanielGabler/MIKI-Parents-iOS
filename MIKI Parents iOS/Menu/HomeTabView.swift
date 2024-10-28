@@ -50,7 +50,7 @@ struct HomeTabView: View {
                 
                 Spacer() // Platzhalter für den Text, der ihn in der Mitte hält
             }
-            .navigationTitle("Home") // Setzt den Navigation Bar Title
+            .navigationTitle("MIKI Parents") // Navigation Bar Title
         }
     }
     

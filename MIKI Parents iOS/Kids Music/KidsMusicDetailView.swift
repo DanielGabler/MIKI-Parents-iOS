@@ -14,118 +14,126 @@ struct KidsMusicDetailView: View {
     // AVPlayer für die Audio-Vorschau
     @State private var player: AVPlayer?
     @State private var isPlaying = false
+    @Environment(\.dismiss) private var dismiss // Umgebung zum Schließen des Sheets
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                // Album Artwork
-                AsyncImage(url: URL(string: musicItem.artworkUrl100!  )) { image in
-                    image.resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 200, height: 200)
-                        .cornerRadius(12)
-                } placeholder: {
-                    ProgressView()
-                }
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 20) {
+                    // Album Artwork
+                    AsyncImage(url: URL(string: musicItem.artworkUrl100!)) { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 200, height: 200)
+                            .cornerRadius(12)
+                    } placeholder: {
+                        ProgressView()
+                    }
 
-                // Track Name und Künstler
-                Text(musicItem.trackName)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
+                    // Track Name und Künstler
+                    Text(musicItem.trackName)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
 
-                Text(musicItem.artistName)
-                    .font(.title2)
-                    .foregroundColor(.gray)
+                    Text(musicItem.artistName)
+                        .font(.title2)
+                        .foregroundColor(.gray)
 
-                // Album Name
-                Text("From Album: \(musicItem.collectionName)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-
-                // Veröffentlichungsdatum
-                if let releaseDate = musicItem.releaseDate {
-                    Text("Released on: \(formatDate(releaseDate))")
+                    // Album Name
+                    Text("From Album: \(musicItem.collectionName)")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
-                }
 
-                // Genre
-                if let genre = musicItem.primaryGenreName {
-                    Text("Genre: \(genre)")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
+                    // Veröffentlichungsdatum
+                    if let releaseDate = musicItem.releaseDate {
+                        Text("Released on: \(formatDate(releaseDate))")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
 
-                // Preis
-                if let price = musicItem.trackPrice, let currency = musicItem.currency {
-                    Text("Price: \(String(format: "%.2f", price)) \(currency)")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
+                    // Genre
+                    if let genre = musicItem.primaryGenreName {
+                        Text("Genre: \(genre)")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
 
-                Spacer()
+                    // Preis
+                    if let price = musicItem.trackPrice, let currency = musicItem.currency {
+                        Text("Price: \(String(format: "%.2f", price)) \(currency)")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
 
-                // Vorschau Button: Abspielen/Pausieren
-                if let previewUrl = musicItem.previewUrl, let url = URL(string: previewUrl) {
-                    VStack {
-                        Button(action: {
-                            if isPlaying {
-                                pausePreview()
-                            } else {
-                                playPreview(url: url)
+                    Spacer()
+
+                    // Vorschau Button: Abspielen/Pausieren
+                    if let previewUrl = musicItem.previewUrl, let url = URL(string: previewUrl) {
+                        VStack {
+                            Button(action: {
+                                if isPlaying {
+                                    pausePreview()
+                                } else {
+                                    playPreview(url: url)
+                                }
+                            }) {
+                                Text(isPlaying ? "Pause Preview" : "Play Preview")
+                                    .font(.headline)
+                                    .padding()
+                                    .background(isPlaying ? Color.red : Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
                             }
-                        }) {
-                            Text(isPlaying ? "Pause Preview" : "Play Preview")
+                        }
+                    } else {
+                        Text("No Preview Available")
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                    }
+
+                    Spacer()
+
+                    // Links zu iTunes, Spotify und YouTube
+                    VStack(spacing: 20) {
+                        // YouTube Link
+                        if let youtubeUrl = createYouTubeUrl(trackName: musicItem.trackName, artistName: musicItem.artistName) {
+                            Link("Find on YouTube", destination: youtubeUrl)
                                 .font(.headline)
                                 .padding()
-                                .background(isPlaying ? Color.red : Color.blue)
+                                .background(Color.red)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+                        
+                        // iTunes Link
+                        if let iTunesUrl = musicItem.trackViewUrl, let url = URL(string: iTunesUrl) {
+                            Link("Buy on iTunes", destination: url)
+                                .font(.headline)
+                                .padding()
+                                .background(Color.blue)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                         }
                     }
-                } else {
-                    Text("No Preview Available")
-                        .font(.headline)
-                        .foregroundColor(.gray)
+
+                    Spacer()
                 }
-
-                Spacer()
-
-                // Links zu iTunes, Spotify und YouTube
-                VStack(spacing: 20) {
-                    
-                    // YouTube Link
-                    if let youtubeUrl = createYouTubeUrl(trackName: musicItem.trackName, artistName: musicItem.artistName) {
-                        Link("Find on YouTube", destination: youtubeUrl)
-                            .font(.headline)
-                            .padding()
-                            .background(Color.red)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                .padding()
+                .navigationTitle(musicItem.trackName)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Schließen") {
+                            dismiss() // Sheet schließen
+                        }
                     }
-                    
-                    // iTunes Link
-                    if let iTunesUrl = musicItem.trackViewUrl, let url = URL(string: iTunesUrl) {
-                        Link("Buy on iTunes", destination: url)
-                            .font(.headline)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
-                
-
                 }
-
-                Spacer()
+                .onDisappear {
+                    // Stoppe den Player, wenn die Ansicht verlassen wird
+                    stopPreview()
+                }
             }
-            .padding()
-            .navigationTitle(musicItem.trackName)
-            .onDisappear {
-                // Stoppe den Player, wenn die Ansicht verlassen wird
-                stopPreview()
-            }
+            .scrollIndicators(.hidden) // Scrollbalken ausblenden
         }
     }
 
@@ -165,6 +173,4 @@ struct KidsMusicDetailView: View {
         let searchQuery = "\(trackName) \(artistName)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         return URL(string: "https://www.youtube.com/results?search_query=\(searchQuery ?? "")")
     }
-
-    
 }
