@@ -13,6 +13,7 @@ struct SettingsTabView: View {
     
     // Benutzerinformationen
     @State private var displayName: String = "Benutzer" // Standardname für den Benutzer
+    @AppStorage("isDarkMode") private var isDarkMode = false // AppStorage für den Dark-/Light-Modus
 
     var body: some View {
         NavigationView {
@@ -25,7 +26,14 @@ struct SettingsTabView: View {
                     .cornerRadius(24)
                     .scaledToFit()
                     .frame(width: 150, height: 150) // Größe des Logos
-                    .padding(.bottom, 40) // Abstand zwischen Logo und den Eingabefeldern
+                    .padding(.bottom, 10) // Weniger Abstand unterhalb des Logos
+                
+                // Dark-/Light-Modus Umschalter unter dem Logo
+                Toggle("Dark Mode", isOn: $isDarkMode)
+                    .padding()
+                    .onChange(of: isDarkMode) { _ in
+                        // Update der Farbgebung direkt bei Änderung
+                    }
 
                 // Begrüßungstext mit dem Benutzernamen oder der E-Mail
                 Text("Angemeldet als \(displayName)")
@@ -73,6 +81,7 @@ struct SettingsTabView: View {
                 fetchUserDetails()
             }
             .navigationTitle("Einstellungen")
+            .preferredColorScheme(isDarkMode ? .dark : .light) // Anpassung des Modus
         }
     }
     
