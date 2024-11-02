@@ -9,11 +9,17 @@
 import SwiftUI
 import AVFoundation
 import CoreImage.CIFilterBuiltins
+import FirebaseAuth
 
 struct FamilyManagerView: View {
     @State private var isShowingScanner = false
     @State private var qrCodeImage: UIImage? = nil
     @State private var scannedCode: String = ""
+    
+    init() {
+        // Initialisieren und generieren des QR-Codes beim Laden der View
+        _qrCodeImage = State(initialValue: generateUserQRCode())
+    }
 
     var body: some View {
         VStack {
@@ -33,16 +39,6 @@ struct FamilyManagerView: View {
                 Text("Gescanntes Ergebnis: \(scannedCode)")
                     .padding()
             }
-            
-            // QR-Code Generierung Button
-            Button("QR Code generieren") {
-                let familyID = "123456" // Beispiel: Die Familie-ID oder andere Informationen
-                qrCodeImage = generateQRCode(from: familyID)
-            }
-            .padding()
-            .background(Color.green)
-            .foregroundColor(.white)
-            .cornerRadius(10)
 
             if let qrCodeImage = qrCodeImage {
                 Image(uiImage: qrCodeImage)
@@ -64,7 +60,22 @@ struct FamilyManagerView: View {
         .navigationTitle("Family Manager")
     }
 
-    // Funktion zum Generieren eines QR-Codes aus einem String
+    // Funktion zur Generierung des QR-Codes mit E-Mail und Passwort
+    func generateUserQRCode() -> UIImage? {
+        guard let user = Auth.auth().currentUser else {
+            print("Benutzer ist nicht authentifiziert.")
+            return nil
+        }
+        
+        // Beispiel: Passwort sollte sicher gespeichert werden; hier als Platzhalter verwendet
+        let password = "userPasswordPlaceholder" // Platzhalter für das Passwort
+
+        // Format der Anmeldedaten für den QR-Code
+        let loginInfo = "email: \(user.email ?? ""), password: \(password)"
+        return generateQRCode(from: loginInfo)
+    }
+
+    // QR-Code aus einem String generieren
     func generateQRCode(from string: String) -> UIImage? {
         let data = Data(string.utf8)
         let filter = CIFilter.qrCodeGenerator()
