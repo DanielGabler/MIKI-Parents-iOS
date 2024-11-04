@@ -116,7 +116,7 @@ struct HomeworkTabView: View {
                     .padding()
                 }
             }
-            .navigationBarTitle("Dokumente")
+            .navigationBarTitle("Dokument")
             .navigationBarItems(trailing: Button(action: {
                 isShowingUploadSheet.toggle() // Öffnet das Upload-Sheet
             }) {
