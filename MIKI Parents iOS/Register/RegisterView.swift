@@ -22,7 +22,7 @@ struct RegisterView: View {
                 .padding()
 
             // Register Button
-            Button("Register") {
+            Button("Registrieren") {
                 viewModel.register()
             }
             .padding()
@@ -35,7 +35,7 @@ struct RegisterView: View {
             
         }
         .padding()
-        .navigationTitle("Register")
+        .navigationTitle("Registrieren")
     }
 }
 

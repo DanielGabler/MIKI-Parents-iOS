@@ -61,8 +61,8 @@ struct FamilyManagerView: View {
             print("Benutzer ist nicht authentifiziert.")
             return nil
         }
-        let password = "userPasswordPlaceholder"
-        let loginInfo = "email: \(user.email ?? ""), password: \(password)"
+        // Nur die E-Mail-Adresse in den QR-Code aufnehmen
+        let loginInfo = "email: \(user.email ?? "")"
         return generateQRCode(from: loginInfo)
     }
 

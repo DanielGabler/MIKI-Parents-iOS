@@ -44,27 +44,48 @@ struct LoginView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
 
-                Button("Login") {
+                // Login Button mit Umrandung
+                Button(action: {
                     attemptSignIn()
+                }) {
+                    Text("Login")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity) // Button über die gesamte Breite
+                        .background(Color.blue) // Hintergrundfarbe
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.blue, lineWidth: 2) // Umrandung
+                        )
                 }
-                .padding()
+                .padding(.bottom, 20) // Abstand zum nächsten Element
                 
-                // QR-Code Scanner Button hinzufügen
+                // QR-Code Scanner Button mit Bild hinzufügen
                 Button(action: {
                     isShowingScanner = true
                 }) {
-                    Text("QR-Scan")
-                        .font(.subheadline)
-                        .foregroundColor(.blue)
-                        .padding(.vertical, 4)
-                        .padding(.horizontal, 8)
-                        .background(Color(UIColor.systemGray5))
-                        .cornerRadius(8)
+                    HStack {
+                        Text("QR-Scan")
+                            .font(.subheadline)
+                            .foregroundColor(.blue)
+
+                        // QR-Icon Bild hinzufügen
+                        Image("qr_icon") // Stelle sicher, dass "qr_icon" im Asset-Katalog vorhanden ist
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20) // Größe des Icons
+                            .padding(.leading, 5) // Abstand zwischen Text und Icon
+                    }
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 8)
+                    .background(Color(UIColor.systemGray5))
+                    .cornerRadius(8)
                 }
                 .sheet(isPresented: $isShowingScanner) {
                     QRCodeScannerView(scannedCode: $scannedCode)
                         .onChange(of: scannedCode) { _, newCode in
-                            // Parse Email und Passwort aus dem gescannten Code
                             parseScannedCode(newCode)
                         }
                 }
@@ -95,11 +116,13 @@ struct LoginView: View {
 
     private func parseScannedCode(_ code: String) {
         let components = code.split(separator: ",")
-        if components.count == 2 {
+        if components.count >= 1 {
+            // Extrahiere die E-Mail und ignoriere das Passwort
             let emailComponent = components[0].replacingOccurrences(of: "email: ", with: "").trimmingCharacters(in: .whitespaces)
-            let passwordComponent = components[1].replacingOccurrences(of: "password: ", with: "").trimmingCharacters(in: .whitespaces)
             self.email = emailComponent
-            self.password = passwordComponent
+            
+            // Schließe das Kamera-Sheet
+            isShowingScanner = false
         }
     }
 }

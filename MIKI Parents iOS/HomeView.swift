@@ -27,7 +27,7 @@ struct HomeView: View {
             HomeworkTabView()
                 .tabItem {
                     Image(systemName: "doc.fill")
-                    Text("Aufgabe")
+                    Text("Dokumente")
                 }
 
             KidsMusicTabView()

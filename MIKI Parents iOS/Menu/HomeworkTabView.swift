@@ -9,6 +9,14 @@ import SwiftUI
 import Firebase
 import PDFKit
 
+// Formatter für das deutsche Datumsformat
+private let germanDateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "dd.MM.yyyy" // Deutsches Datumsformat
+    formatter.locale = Locale(identifier: "de_DE") // Deutsche Lokalisierung
+    return formatter
+}()
+
 struct HomeworkTabView: View {
     @State private var isShowingUploadSheet = false
     @State private var items: [FileItem] = [] // Liste der Dateien
@@ -44,7 +52,7 @@ struct HomeworkTabView: View {
                                                         .foregroundColor(Color.gray)
                                                         .multilineTextAlignment(.leading)
                                                     // Zeige das Upload-Datum an
-                                                    Text(dateFormatter.string(from: item.uploadDate?.dateValue() ?? Date()))
+                                                    Text("Erstellt: \(germanDateFormatter.string(from: item.uploadDate?.dateValue() ?? Date()))")
                                                         .font(.subheadline)
                                                         .foregroundColor(.gray)
                                                 }
@@ -72,7 +80,7 @@ struct HomeworkTabView: View {
                                                         .foregroundColor(Color.gray)
                                                         .multilineTextAlignment(.leading)
                                                     // Zeige das Upload-Datum an
-                                                    Text(dateFormatter.string(from: item.uploadDate?.dateValue() ?? Date()))
+                                                    Text("Erstellt: \(germanDateFormatter.string(from: item.uploadDate?.dateValue() ?? Date()))")
                                                         .font(.subheadline)
                                                         .foregroundColor(.gray)
                                                 }
@@ -108,7 +116,7 @@ struct HomeworkTabView: View {
                     .padding()
                 }
             }
-            .navigationBarTitle("Aufgabe")
+            .navigationBarTitle("Dokumente")
             .navigationBarItems(trailing: Button(action: {
                 isShowingUploadSheet.toggle() // Öffnet das Upload-Sheet
             }) {
