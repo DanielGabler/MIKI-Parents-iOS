@@ -63,7 +63,7 @@ struct LoginView: View {
                 }
                 .sheet(isPresented: $isShowingScanner) {
                     QRCodeScannerView(scannedCode: $scannedCode)
-                        .onChange(of: scannedCode) { newCode in
+                        .onChange(of: scannedCode) { _, newCode in
                             // Parse Email und Passwort aus dem gescannten Code
                             parseScannedCode(newCode)
                         }
