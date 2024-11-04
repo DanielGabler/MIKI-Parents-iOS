@@ -17,7 +17,7 @@ struct RegisterView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
 
-            SecureField("Password", text: $viewModel.password)
+            SecureField("Passwort", text: $viewModel.password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
 

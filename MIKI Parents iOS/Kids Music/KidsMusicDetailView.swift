@@ -41,13 +41,13 @@ struct KidsMusicDetailView: View {
                         .foregroundColor(.gray)
 
                     // Album Name
-                    Text("From Album: \(musicItem.collectionName)")
+                    Text("Album: \(musicItem.collectionName)")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
 
                     // Veröffentlichungsdatum
                     if let releaseDate = musicItem.releaseDate {
-                        Text("Released on: \(formatDate(releaseDate))")
+                        Text("Veröffentlicht am: \(formatDate(releaseDate))")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -61,7 +61,7 @@ struct KidsMusicDetailView: View {
 
                     // Preis
                     if let price = musicItem.trackPrice, let currency = musicItem.currency {
-                        Text("Price: \(String(format: "%.2f", price)) \(currency)")
+                        Text("Preis: \(String(format: "%.2f", price)) \(currency)")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
@@ -78,7 +78,7 @@ struct KidsMusicDetailView: View {
                                     playPreview(url: url)
                                 }
                             }) {
-                                Text(isPlaying ? "Pause Preview" : "Play Preview")
+                                Text(isPlaying ? "Vorschau Stoppen" : "Vorschau Starten")
                                     .font(.headline)
                                     .padding()
                                     .background(isPlaying ? Color.red : Color.blue)
@@ -98,7 +98,7 @@ struct KidsMusicDetailView: View {
                     VStack(spacing: 20) {
                         // YouTube Link
                         if let youtubeUrl = createYouTubeUrl(trackName: musicItem.trackName, artistName: musicItem.artistName) {
-                            Link("Find on YouTube", destination: youtubeUrl)
+                            Link("Auf YouTube Abspielen", destination: youtubeUrl)
                                 .font(.headline)
                                 .padding()
                                 .background(Color.red)
@@ -108,7 +108,7 @@ struct KidsMusicDetailView: View {
                         
                         // iTunes Link
                         if let iTunesUrl = musicItem.trackViewUrl, let url = URL(string: iTunesUrl) {
-                            Link("Buy on iTunes", destination: url)
+                            Link("Bei iTunes Kaufen", destination: url)
                                 .font(.headline)
                                 .padding()
                                 .background(Color.blue)

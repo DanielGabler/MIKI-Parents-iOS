@@ -40,7 +40,7 @@ struct LoginView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
-                SecureField("Password", text: $password)
+                SecureField("Passwort", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
 
@@ -48,7 +48,7 @@ struct LoginView: View {
                 Button(action: {
                     attemptSignIn()
                 }) {
-                    Text("Login")
+                    Text("Anmelden")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
