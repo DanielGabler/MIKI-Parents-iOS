@@ -23,11 +23,10 @@ struct NotesTabView: View {
     var body: some View {
         NavigationView {
             VStack {
-                // Ladebalken anzeigen, während die Beiträge geladen werden
                 if isLoading {
                     ProgressView("Beiträge werden geladen...")
                         .progressViewStyle(CircularProgressViewStyle())
-                        .scaleEffect(1.5) // Vergrößert den Ladebalken
+                        .scaleEffect(1.5)
                         .padding()
                 } else {
                     List {
@@ -55,23 +54,23 @@ struct NotesTabView: View {
                     }
                 }
             }
-            .navigationBarTitle("Notiz") // Titel Beschreibung
+            .navigationBarTitle("Notiz")
             .navigationBarItems(
                 leading: Button(action: {
-                    isShowingCalendarSheet.toggle() // Öffnet das Sheet für den Ferienkalender
-                    fetchHolidays() // Lade die Feiertage von der API
+                    isShowingCalendarSheet.toggle()
+                    fetchHolidays()
                 }) {
-                    Image(systemName: "calendar.badge.exclamationmark") // Kalendersymbol
+                    Image(systemName: "calendar.badge.exclamationmark")
                         .font(.title)
                 },
                 trailing: Button(action: {
-                    isShowingNewPostSheet.toggle() // Öffnet das Sheet für neue Posts
+                    isShowingNewPostSheet.toggle()
                 }) {
-                    Image(systemName: "plus") // Plus Symbol für neuen Beitrag
+                    Image(systemName: "plus")
                         .font(.title)
                 }
             )
-            .onAppear(perform: fetchPosts) // Beiträge laden, wenn die View erscheint
+            .onAppear(perform: fetchPosts)
             .sheet(isPresented: $isShowingNewPostSheet) {
                 NewPostView(isPresented: $isShowingNewPostSheet, onPostAdded: fetchPosts)
             }
@@ -93,49 +92,41 @@ struct NotesTabView: View {
         }
     }
     
-    // Funktion, um die Beiträge von Firebase zu laden
     private func fetchPosts() {
-        isLoading = true // Setzt den Ladezustand auf true, wenn die Anfrage gestartet wird
+        isLoading = true
         let db = Firestore.firestore()
         db.collection("Posts").getDocuments { snapshot, error in
             if let error = error {
                 print("Error fetching posts: \(error)")
-                isLoading = false // Setzt den Ladezustand zurück
+                isLoading = false
                 return
             }
-            
-            // Beiträge laden und nur die mit einem gültigen Datum sortieren
             self.posts = (snapshot?.documents.compactMap { document in
                 try? document.data(as: Post.self)
             } ?? []).sorted {
-                // Optionales Unwrapping von uploadDate
                 guard let date1 = $0.uploadDate, let date2 = $1.uploadDate else {
-                    // Falls eines der Daten fehlt, behandle es als älteres Datum
                     return $0.uploadDate != nil
                 }
                 return date1 > date2
             }
-            isLoading = false // Setzt den Ladezustand zurück
+            isLoading = false
         }
     }
     
-    // Funktion, um den Beitrag in Firebase zu löschen
     private func deletePost(_ post: Post) {
         guard let postId = post.id else { return }
-        
         let db = Firestore.firestore()
         db.collection("Posts").document(postId).delete { error in
             if let error = error {
                 print("Error deleting post: \(error)")
             } else {
-                fetchPosts() // Aktualisiere die Liste nach dem Löschen
+                fetchPosts()
             }
         }
     }
 
-    // Funktion, um die Feiertage von der Ferienkalender API zu laden und nach Jahr zu sortieren
     private func fetchHolidays() {
-        isLoadingHolidays = true // Ladezustand auf true setzen
+        isLoadingHolidays = true
         guard let url = URL(string: "https://ferien-api.de/api/v1/holidays") else {
             print("Ungültige URL")
             return
@@ -144,21 +135,17 @@ struct NotesTabView: View {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print("Fehler beim Laden der Feiertage: \(error)")
-                isLoadingHolidays = false // Ladezustand auf false setzen
+                isLoadingHolidays = false
                 return
             }
-            
             guard let data = data else {
                 print("Keine Daten erhalten")
-                isLoadingHolidays = false // Ladezustand auf false setzen
+                isLoadingHolidays = false
                 return
             }
-            
             do {
-                // Decode die API-Antwort in das Holiday-Model
                 let decodedHolidays = try JSONDecoder().decode([Holiday].self, from: data)
                 DispatchQueue.main.async {
-                    // Feiertage nach Startdatum sortieren (neueste oben)
                     self.holidays = decodedHolidays.sorted {
                         let dateFormatter = ISO8601DateFormatter()
                         guard let date1 = dateFormatter.date(from: $0.start),
@@ -167,18 +154,16 @@ struct NotesTabView: View {
                         }
                         return date1 > date2
                     }
-                    isLoadingHolidays = false // Ladezustand auf false setzen
+                    isLoadingHolidays = false
                 }
             } catch {
                 print("Fehler beim Decodieren der Feiertage: \(error)")
-                isLoadingHolidays = false // Ladezustand auf false setzen
+                isLoadingHolidays = false
             }
         }
-        
         task.resume()
     }
     
-    // Funktion zum Formatieren des Datums
     private func formattedDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -189,7 +174,7 @@ struct NotesTabView: View {
 
 // Model für die API-Daten
 struct Holiday: Identifiable, Codable {
-    var id: String { uuid } // Um Holiday Identifiable zu machen
+    var id: String { uuid }
     let uuid = UUID().uuidString
     let name: String
     let start: String
@@ -203,18 +188,16 @@ struct HolidayListView: View {
     @Binding var isLoadingHolidays: Bool
     @Binding var selectedState: String
     @Binding var selectedYear: String
-    
-    // Liste der Bundesländer (StateCodes)
+    @Environment(\.dismiss) private var dismiss
+
     let states = ["Alle", "BE", "BY", "BW", "HE", "HH", "MV", "NI", "NW", "RP", "SH", "SL", "SN", "ST", "TH", "BB"]
     
-    // Liste der verfügbaren Jahre
     var years: [String] {
         let calendar = Calendar.current
         let currentYear = calendar.component(.year, from: Date())
         return ["Alle"] + (2020...currentYear + 1).map { String($0) }
     }
 
-    // Gefilterte Ferien nach Bundesland und Jahr
     var filteredHolidays: [Holiday] {
         let filteredByState = selectedState == "Alle" ? holidays : holidays.filter { $0.stateCode == selectedState }
         
@@ -222,7 +205,7 @@ struct HolidayListView: View {
             return filteredByState
         } else {
             return filteredByState.filter {
-                let startYear = String($0.start.prefix(4)) // Jahr aus dem Startdatum extrahieren
+                let startYear = String($0.start.prefix(4))
                 return startYear == selectedYear
             }
         }
@@ -231,26 +214,24 @@ struct HolidayListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                // Picker für die Auswahl des Bundeslands
                 Picker("Bundesland auswählen", selection: $selectedState) {
                     ForEach(states, id: \.self) { state in
                         Text(state).tag(state)
                     }
                 }
-                .pickerStyle(MenuPickerStyle()) // Auswahl über ein Menü
+                .pickerStyle(MenuPickerStyle())
 
-                // Picker für die Auswahl des Jahres
                 Picker("Jahr auswählen", selection: $selectedYear) {
                     ForEach(years, id: \.self) { year in
                         Text(year).tag(year)
                     }
                 }
-                .pickerStyle(MenuPickerStyle()) // Auswahl über ein Menü
+                .pickerStyle(MenuPickerStyle())
                 
                 if isLoadingHolidays {
                     ProgressView("Ferienkalender wird geladen...")
                         .progressViewStyle(CircularProgressViewStyle())
-                        .scaleEffect(1.5) // Vergrößert den Ladebalken
+                        .scaleEffect(1.5)
                         .padding()
                 } else {
                     List(filteredHolidays) { holiday in
@@ -263,6 +244,14 @@ struct HolidayListView: View {
                         }
                     }
                     .navigationBarTitle("Ferienkalender", displayMode: .inline)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button("Schließen") {
+                                dismiss()
+                            }
+                            .foregroundColor(.blue)
+                        }
+                    }
                 }
             }
         }

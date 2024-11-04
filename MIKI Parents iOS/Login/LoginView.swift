@@ -11,36 +11,31 @@ import FirebaseFirestoreCombineSwift
 import AVFoundation
 
 struct LoginView: View {
-    
     @State var email = ""
     @State var password = ""
     @State var loginSuccess = false
     @State var errorMessage: String?
-    
-    // State für die Logo-Animation
-    @State private var logoOffset: CGFloat = -UIScreen.main.bounds.height / 2 // Startpunkt außerhalb des Bildschirms
-    
+    @State private var isShowingScanner = false
+    @State private var scannedCode: String = ""
+    @State private var logoOffset: CGFloat = -UIScreen.main.bounds.height / 2
+
     var body: some View {
         NavigationStack {
             VStack {
-                // Logo-Bild mit Animation
-                Image("logo") // Stelle sicher, dass der Name des Bilds "logo.png" korrekt ist
+                Image("logo")
                     .resizable()
                     .cornerRadius(24)
                     .scaledToFit()
-                    .frame(width: 150, height: 150) // Größe des Logos
-                    .offset(y: logoOffset) // Offset für die Animation
+                    .frame(width: 150, height: 150)
+                    .offset(y: logoOffset)
                     .onAppear {
-                        // Animation beim Starten der Seite
                         withAnimation(.easeOut(duration: 1.5)) {
-                            logoOffset = 0 // Zielpunkt: oberhalb der Eingabefelder
+                            logoOffset = 0
                         }
-                        // Sound abspielen
                         AudioPlayer.shared.playSound(soundFileName: "kids_laugh")
                     }
-                    .padding(.bottom, 40) // Abstand zwischen Logo und den Eingabefeldern
+                    .padding(.bottom, 40)
                 
-                // Textfelder für Email und Passwort
                 TextField("Email", text: $email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
@@ -48,14 +43,32 @@ struct LoginView: View {
                 SecureField("Password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                
-                // Login Button
+
                 Button("Login") {
                     attemptSignIn()
                 }
                 .padding()
                 
-                // Button zur Registrierung
+                // QR-Code Scanner Button hinzufügen
+                Button(action: {
+                    isShowingScanner = true
+                }) {
+                    Text("QR-Scan")
+                        .font(.subheadline)
+                        .foregroundColor(.blue)
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 8)
+                        .background(Color(UIColor.systemGray5))
+                        .cornerRadius(8)
+                }
+                .sheet(isPresented: $isShowingScanner) {
+                    QRCodeScannerView(scannedCode: $scannedCode)
+                        .onChange(of: scannedCode) { newCode in
+                            // Parse Email und Passwort aus dem gescannten Code
+                            parseScannedCode(newCode)
+                        }
+                }
+
                 VStack {
                     Text("Noch keinen Account?")
                     NavigationLink(destination: RegisterView()) {
@@ -64,13 +77,12 @@ struct LoginView: View {
                     }
                 }
                 .padding(.top, 20)
-                
             }
             .padding()
             .navigationTitle("MIKI Parents")
         }
     }
-    
+
     private func attemptSignIn() {
         Task {
             do {
@@ -78,6 +90,16 @@ struct LoginView: View {
             } catch {
                 print("Error")
             }
+        }
+    }
+
+    private func parseScannedCode(_ code: String) {
+        let components = code.split(separator: ",")
+        if components.count == 2 {
+            let emailComponent = components[0].replacingOccurrences(of: "email: ", with: "").trimmingCharacters(in: .whitespaces)
+            let passwordComponent = components[1].replacingOccurrences(of: "password: ", with: "").trimmingCharacters(in: .whitespaces)
+            self.email = emailComponent
+            self.password = passwordComponent
         }
     }
 }

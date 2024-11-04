@@ -26,31 +26,32 @@ struct HomeTabView: View {
     @State private var logoOpacity = 0.0 // Startet unsichtbar
     
     var body: some View {
-        NavigationView { // Fügt die NavigationView hinzu
+        NavigationView {
             VStack {
                 // Logo oben auf dem Bildschirm
                 Image("logo")
                     .resizable()
-                    .cornerRadius(24) // Abgerundete Ecken
+                    .cornerRadius(24)
                     .scaledToFit()
-                    .frame(width: 150, height: 150) // Größe des Logos
-                    .opacity(logoOpacity) // Kontrolliere die Sichtbarkeit
-                    .padding(.top, 40) // Abstand vom oberen Rand
-
-               
-
+                    .frame(width: 150, height: 150)
+                    .opacity(logoOpacity)
+                    .padding(.top, 40)
+                
+                Spacer() // Fügt flexiblen Abstand zwischen Logo und Text hinzu
+                
                 // Begrüßungstext unterhalb des Logos
                 Text(displayedText)
-                    .font(.title) // Style der Schrift
-                    .multilineTextAlignment(.center) // Mittig
-                    .padding() // Automatischer Abstand
+                    .font(.title)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal) // Seitenabstand
+                    .padding(.top, 20) // zusätzlicher Abstand zum Logo
                     .onAppear {
-                        startTypingAnimation() // Startet die Tippen-Animation
+                        startTypingAnimation()
                     }
                 
                 Spacer() // Platzhalter für den Text, der ihn in der Mitte hält
             }
-            .navigationTitle("MIKI Parents") // Navigation Bar Title
+            .navigationTitle("MIKI Parents")
         }
     }
     
@@ -58,16 +59,14 @@ struct HomeTabView: View {
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
             if charIndex < fullText.count {
                 let index = fullText.index(fullText.startIndex, offsetBy: charIndex)
-                displayedText.append(fullText[index]) // Füge das nächste Zeichen hinzu
+                displayedText.append(fullText[index])
                 charIndex += 1
             } else {
                 timer?.invalidate()
                 timer = nil
-                
-                // Sobald der Text vollständig ist, Logo langsam einblenden
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     withAnimation(.easeIn(duration: 1.5)) {
-                        logoOpacity = 1.0 // Logo einblenden
+                        logoOpacity = 1.0
                     }
                 }
             }

@@ -12,42 +12,29 @@ import CoreImage.CIFilterBuiltins
 import FirebaseAuth
 
 struct FamilyManagerView: View {
-    @State private var isShowingScanner = false
     @State private var qrCodeImage: UIImage? = nil
-    @State private var scannedCode: String = ""
-    
+    @Environment(\.dismiss) private var dismiss // Zugriff auf die Dismiss-Umgebung
+
     init() {
-        // Initialisieren und generieren des QR-Codes beim Laden der View
         _qrCodeImage = State(initialValue: generateUserQRCode())
     }
 
     var body: some View {
         VStack {
-            // QR-Code Scanner Button
-            Button("QR Code scannen") {
-                isShowingScanner = true // Scanner anzeigen
-            }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
-            .sheet(isPresented: $isShowingScanner) {
-                QRCodeScannerView(scannedCode: $scannedCode)
-            }
-
-            if !scannedCode.isEmpty {
-                Text("Gescanntes Ergebnis: \(scannedCode)")
-                    .padding()
-            }
+            // Hinweistext oberhalb des QR-Codes
+            Text("Teile diesen QR Code deinem Familienmitglied mit, damit er beim Login verwendet werden kann um der Familie beizutreten.")
+                .font(.subheadline)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+                .padding()
 
             if let qrCodeImage = qrCodeImage {
                 Image(uiImage: qrCodeImage)
                     .resizable()
-                    .interpolation(.none) // Verhindert das Weichzeichnen beim Skalieren
+                    .interpolation(.none)
                     .frame(width: 200, height: 200)
                     .padding()
                 
-                // Button zum Teilen des QR-Codes
                 Button("QR Code teilen") {
                     shareQRCode(qrCodeImage)
                 }
@@ -58,31 +45,33 @@ struct FamilyManagerView: View {
             }
         }
         .navigationTitle("Family Manager")
+        .navigationBarBackButtonHidden(true) // Standard-Zurück-Button verstecken
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Zurück") {
+                    dismiss() // Zurück zur vorherigen Ansicht
+                }
+                .foregroundColor(.blue)
+            }
+        }
     }
 
-    // Funktion zur Generierung des QR-Codes mit E-Mail und Passwort
     func generateUserQRCode() -> UIImage? {
         guard let user = Auth.auth().currentUser else {
             print("Benutzer ist nicht authentifiziert.")
             return nil
         }
-        
-        // Beispiel: Passwort sollte sicher gespeichert werden; hier als Platzhalter verwendet
-        let password = "userPasswordPlaceholder" // Platzhalter für das Passwort
-
-        // Format der Anmeldedaten für den QR-Code
+        let password = "userPasswordPlaceholder"
         let loginInfo = "email: \(user.email ?? ""), password: \(password)"
         return generateQRCode(from: loginInfo)
     }
 
-    // QR-Code aus einem String generieren
     func generateQRCode(from string: String) -> UIImage? {
         let data = Data(string.utf8)
         let filter = CIFilter.qrCodeGenerator()
         filter.setValue(data, forKey: "inputMessage")
         
-        let transform = CGAffineTransform(scaleX: 10, y: 10) // QR-Code um das 10-fache vergrößern
-
+        let transform = CGAffineTransform(scaleX: 10, y: 10)
         if let outputImage = filter.outputImage?.transformed(by: transform) {
             let context = CIContext()
             if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
@@ -92,12 +81,10 @@ struct FamilyManagerView: View {
         return nil
     }
 
-    // Funktion zum Teilen des QR-Codes
     func shareQRCode(_ qrCode: UIImage?) {
         guard let qrCode = qrCode else { return }
         let activityVC = UIActivityViewController(activityItems: [qrCode], applicationActivities: nil)
         
-        // Auf dem Hauptthread ausführen
         DispatchQueue.main.async {
             if let topController = UIApplication.shared.windows.first?.rootViewController {
                 topController.present(activityVC, animated: true, completion: nil)
