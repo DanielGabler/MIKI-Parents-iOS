@@ -12,9 +12,9 @@ struct HomeTabView: View {
     @State private var displayedText = ""
     private var fullText: String {
         if let displayName = Auth.auth().currentUser?.displayName {
-            return "Herzlich Willkommen, \(displayName) bei\nMIKI Parents iOS"
+            return "Herzlich Willkommen,\n \(displayName) bei\nMIKI Parents iOS"
         } else if let email = Auth.auth().currentUser?.email {
-            return "Herzlich Willkommen, \(email) bei\nMIKI Parents iOS"
+            return "Herzlich Willkommen,\n \(email) bei\nMIKI Parents iOS"
         } else {
             return "Herzlich Willkommen bei\nMIKI Parents iOS"
         }

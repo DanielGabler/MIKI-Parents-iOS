@@ -36,8 +36,9 @@ struct SettingsTabView: View {
                     }
 
                 // Begrüßungstext mit dem Benutzernamen oder der E-Mail
-                Text("Angemeldet als \(displayName)")
+                Text("Angemeldet als\n \(displayName)")
                     .font(.title2)
+                    .multilineTextAlignment(.center)
                     .padding(.bottom, 20) // Abstand zwischen dem Namen und dem Logout-Button
                 
                 // Fehlermeldung, falls Logout fehlschlägt
